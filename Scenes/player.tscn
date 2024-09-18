@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjn35ya6houic"]
+[gd_scene load_steps=5 format=3 uid="uid://cjn35ya6houic"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_w3gui"]
 [ext_resource type="Texture2D" uid="uid://d2ypcqacrb6ll" path="res://icon.svg" id="2_re2t2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtay"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w3gui")
@@ -15,3 +17,10 @@ shape = SubResource("RectangleShape2D_2spal")
 texture = ExtResource("2_re2t2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_xvtay")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurtbox_body_entered"]
