@@ -11,6 +11,7 @@ signal taken_damage # talks to HUD
 
 
 var input_dir:Vector2 = Vector2.ZERO
+var last_dir:Vector2 = Vector2.ZERO
 
 var dash_dir:Vector2 = Vector2.ZERO
 var can_dash:bool = true
@@ -37,12 +38,15 @@ func _process(delta):
 func _physics_process(delta):
 	input_dir = Input.get_vector("left","right","up","down");
 	
+	if input_dir != Vector2.ZERO:
+		last_dir = input_dir
+	
 	if Input.is_action_pressed("right") || Input.is_action_pressed("left"):
 		input_dir.y = 0
 	elif Input.is_action_pressed("up") || Input.is_action_pressed("down"):
 		input_dir.x = 0
-	else:
-		input_dir = Vector2.ZERO
+	#else:
+	#	input_dir = Vector2.ZERO
 	
 	input_dir = input_dir.normalized()
 	
@@ -64,11 +68,11 @@ func dash():
 
 func weapon_attack():
 	#activate melee attacks
-	print("attask")
 	#initialize ranged attack
 	#use $AttackOrigin to initialize attack
+	##Ranged Attack
 	var projectile = range_attack.instantiate()
-	projectile.initialize($AttackOrigin.global_position, self.rotation)
+	projectile.initialize($AttackOrigin.global_position, last_dir.angle())
 	get_parent().add_child(projectile)
 	projectile.activate()
 
@@ -80,11 +84,8 @@ func hit(amount):
 	taken_damage.emit()
 	#modify health
 
+
 ##Collision check
-#when invincible is true
-
-
-
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("enemy") and not is_invincible:
 		#hit(body.get_damage())
