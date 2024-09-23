@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c65e7b4joy6fc"]
+
+[ext_resource type="Script" path="res://Scenes/sword.gd" id="1_jen3i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klhkm"]
+height = 38.0
+
+[node name="Sword" type="Area2D"]
+position = Vector2(16, 0)
+script = ExtResource("1_jen3i")
+activation_time = 0.25
+recovery_time = 0.25
+
+[node name="Detector" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_klhkm")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

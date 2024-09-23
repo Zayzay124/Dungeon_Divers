@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtay"]
+size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w3gui")
@@ -26,7 +27,8 @@ shape = SubResource("RectangleShape2D_xvtay")
 wait_time = 0.5
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="AttackOrigin" type="Node2D" parent="."]
+position = Vector2(64, 0)
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

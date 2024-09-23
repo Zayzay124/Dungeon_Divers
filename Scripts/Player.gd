@@ -18,14 +18,18 @@ var can_dash:bool = true
 var is_invincible:bool = false
 
 ##PreLoad Scenes
-#load melee attack scene
+@export var range_attack:PackedScene = preload("res://Scenes/arrow.tscn")
+@export var melee_attack:PackedScene = preload("res://Scenes/sword.tscn")
 
 ##Nodes vars to instantiate attack scenes in
+var melee:Node
 
 func _ready():
 	#Instantiate attack scenes
 	#add them as children
-	pass
+	melee = melee_attack.instantiate()
+	add_child(melee)
+
 
 func _process(delta):
 	pass
@@ -48,6 +52,8 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("dash") and can_dash:
 		dash()
+	if event.is_action_pressed("weapon_attack"):
+		weapon_attack()
 
 func dash():
 	speed += 300
@@ -57,7 +63,14 @@ func dash():
 	$DashTimer.start()
 
 func weapon_attack():
-	pass
+	#activate melee attacks
+	print("attask")
+	#initialize ranged attack
+	#use $AttackOrigin to initialize attack
+	var projectile = range_attack.instantiate()
+	projectile.initialize($AttackOrigin.global_position, self.rotation)
+	get_parent().add_child(projectile)
+	projectile.activate()
 
 func magic_attack():
 	pass
