@@ -9,6 +9,7 @@ signal taken_damage # talks to HUD
 @export var magic_points:int = 50
 @export var dash_speed:int = 10
 
+enum WEAPON {SWORD,BOW}
 
 var input_dir:Vector2 = Vector2.ZERO
 var last_dir:Vector2 = Vector2.ZERO
@@ -17,6 +18,7 @@ var dash_dir:Vector2 = Vector2.ZERO
 var can_dash:bool = true
 
 var is_invincible:bool = false
+var dashing:bool = false #
 
 ##PreLoad Scenes
 @export var range_attack:PackedScene = preload("res://Scenes/arrow.tscn")
@@ -66,11 +68,16 @@ func dash():
 	velocity = input_dir * dash_speed
 	$DashTimer.start()
 
+# Would like to decouple this later
 func weapon_attack():
-	#activate melee attacks
-	#initialize ranged attack
-	#use $AttackOrigin to initialize attack
-	##Ranged Attack
+	match WEAPON:
+		WEAPON.SWORD:
+			pass
+		WEAPON.BOW:
+			ranged_attack()
+
+
+func ranged_attack():
 	var projectile = range_attack.instantiate()
 	projectile.initialize($AttackOrigin.global_position, last_dir.angle())
 	get_parent().add_child(projectile)
