@@ -10,6 +10,7 @@ signal taken_damage # talks to HUD
 @export var dash_speed:int = 10
 
 enum WEAPON {SWORD,BOW}
+var current_weapon:WEAPON #change_name
 
 var input_dir:Vector2 = Vector2.ZERO
 var last_dir:Vector2 = Vector2.ZERO
@@ -18,7 +19,6 @@ var dash_dir:Vector2 = Vector2.ZERO
 var can_dash:bool = true
 
 var is_invincible:bool = false
-var dashing:bool = false #
 
 ##PreLoad Scenes
 @export var range_attack:PackedScene = preload("res://Scenes/arrow.tscn")
@@ -55,11 +55,12 @@ func _physics_process(delta):
 	velocity = input_dir * speed
 	move_and_collide(velocity * delta)
 
-func _input(event):
+func _input(event): #replace with match?
 	if event.is_action_pressed("dash") and can_dash:
 		dash()
 	if event.is_action_pressed("weapon_attack"):
 		weapon_attack()
+
 
 func dash():
 	speed += 300
@@ -70,9 +71,9 @@ func dash():
 
 # Would like to decouple this later
 func weapon_attack():
-	match WEAPON:
+	match current_weapon:
 		WEAPON.SWORD:
-			pass
+			print("not yet implemented")
 		WEAPON.BOW:
 			ranged_attack()
 
@@ -93,11 +94,12 @@ func hit(amount):
 
 
 ##Collision check
-func _on_hurtbox_body_entered(body):
-	if body.is_in_group("enemy") and not is_invincible:
-		#hit(body.get_damage())
-		pass
-	pass
+
+##Area check (handles items/pickups)
+func _on_hurt_box_area_entered(area):
+	if area.is_in_group("Weapon_Pickup") and Input.is_action_pressed("interact"):
+		current_weapon = area.weapon_type
+		print(current_weapon)
 
 
 func _on_dash_timer_timeout():
