@@ -20,8 +20,8 @@ var can_dash:bool = true
 var is_invincible:bool = false
 
 ##PreLoad Scenes
-@export var range_attack:PackedScene = preload("res://Scenes/arrow.tscn")
-@export var melee_attack:PackedScene = preload("res://Scenes/sword.tscn")
+@export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
+@export var melee_attack_scene:PackedScene = preload("res://Scenes/sword.tscn")
 
 ##Nodes vars to instantiate attack scenes in
 var melee:Node
@@ -29,12 +29,11 @@ var melee:Node
 func _ready():
 	#Instantiate attack scenes
 	#add them as children
-	melee = melee_attack.instantiate()
+	melee = melee_attack_scene.instantiate()
 	add_child(melee)
 
-
 func _process(delta):
-	pass
+	orient()
 
 func _physics_process(delta):
 	input_dir = Input.get_vector("left","right","up","down");
@@ -42,17 +41,10 @@ func _physics_process(delta):
 	if input_dir != Vector2.ZERO:
 		last_dir = input_dir
 	
-	#remove to be 8 direciton 
-	if Input.is_action_pressed("right") || Input.is_action_pressed("left"):
-		input_dir.y = 0
-	elif Input.is_action_pressed("up") || Input.is_action_pressed("down"):
-		input_dir.x = 0
-	#else:
-	#	input_dir = Vector2.ZERO
-	
 	input_dir = input_dir.normalized()
 	
 	velocity = input_dir * speed
+	
 	move_and_collide(velocity * delta)
 
 #clean this up later
@@ -73,21 +65,27 @@ func dash():
 	can_dash = false
 	is_invincible = true
 	velocity = input_dir * dash_speed
-	$DashTimer.start()
+	await get_tree().create_timer(0.5).timeout
+	speed = 300
+	can_dash = true
+	is_invincible = false
 
 # Would like to decouple this later
 func weapon_attack():
 	match current_weapon:
 		Weapon_Pickup.WEAPON.SWORD:
-			print("not yet implemented")
+			melee_attack()
 		Weapon_Pickup.WEAPON.BOW:
 			ranged_attack()
 
+func melee_attack():
+	melee.activate($AttackOrigin)
+
 func ranged_attack():
-	var projectile = range_attack.instantiate()
+	var projectile = range_attack_scene.instantiate()
 	projectile.initialize($AttackOrigin.global_position, last_dir.angle())
 	get_parent().add_child(projectile)
-	projectile.activate()
+	projectile.activate($AttackOrigin)
 
 func magic_attack():
 	pass
@@ -97,11 +95,8 @@ func hit(amount):
 	taken_damage.emit()
 	#modify health
 
-
-##Collision check
-
-
-func _on_dash_timer_timeout():
-	speed = 300
-	can_dash = true
-	is_invincible = false
+func orient():
+	#80 is from center of player to edge of player 
+	##TODO get rid of magic number 80
+	$AttackOrigin.position = 80 * last_dir
+	$AttackOrigin.rotation = last_dir.angle()

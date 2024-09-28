@@ -24,10 +24,9 @@ func initialize(origin:Vector2, angle:float):
 func _physics_process(delta):
 	global_position += velocity * delta
 
-func activate():
+func activate(origin):
 	visible = true
 	$Detector.disabled = false
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("freed")
 	queue_free()

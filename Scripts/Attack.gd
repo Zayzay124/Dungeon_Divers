@@ -17,7 +17,9 @@ func _process(delta):
 	pass
 
 
-func activate():
+func activate(origin):
+	position = origin.position
+	rotation = origin.rotation
 	visible = true
 	$Detector.disabled = false
 	await get_tree().create_timer(activation_time).timeout
