@@ -9,8 +9,7 @@ signal taken_damage # talks to HUD
 @export var magic_points:int = 50
 @export var dash_speed:int = 10
 
-enum WEAPON {SWORD,BOW}
-var current_weapon:WEAPON #change_name
+var current_weapon:Weapon_Pickup.WEAPON
 
 var input_dir:Vector2 = Vector2.ZERO
 var last_dir:Vector2 = Vector2.ZERO
@@ -43,6 +42,7 @@ func _physics_process(delta):
 	if input_dir != Vector2.ZERO:
 		last_dir = input_dir
 	
+	#remove to be 8 direciton 
 	if Input.is_action_pressed("right") || Input.is_action_pressed("left"):
 		input_dir.y = 0
 	elif Input.is_action_pressed("up") || Input.is_action_pressed("down"):
@@ -55,11 +55,17 @@ func _physics_process(delta):
 	velocity = input_dir * speed
 	move_and_collide(velocity * delta)
 
+#clean this up later
 func _input(event): #replace with match?
 	if event.is_action_pressed("dash") and can_dash:
 		dash()
 	if event.is_action_pressed("weapon_attack"):
 		weapon_attack()
+	if event.is_action_pressed("interact"):
+		for area in $HurtBox.get_overlapping_areas(): #might run into problem where two weapons are on top of each other
+			if area.is_in_group("Weapon_Pickup"):
+				current_weapon = area.weapon_type
+				print(current_weapon)
 
 
 func dash():
@@ -72,11 +78,10 @@ func dash():
 # Would like to decouple this later
 func weapon_attack():
 	match current_weapon:
-		WEAPON.SWORD:
+		Weapon_Pickup.WEAPON.SWORD:
 			print("not yet implemented")
-		WEAPON.BOW:
+		Weapon_Pickup.WEAPON.BOW:
 			ranged_attack()
-
 
 func ranged_attack():
 	var projectile = range_attack.instantiate()
@@ -94,12 +99,6 @@ func hit(amount):
 
 
 ##Collision check
-
-##Area check (handles items/pickups)
-func _on_hurt_box_area_entered(area):
-	if area.is_in_group("Weapon_Pickup") and Input.is_action_pressed("interact"):
-		current_weapon = area.weapon_type
-		print(current_weapon)
 
 
 func _on_dash_timer_timeout():

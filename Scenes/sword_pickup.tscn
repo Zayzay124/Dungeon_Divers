@@ -1,23 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://djxq3yfwyfc4f"]
+[gd_scene load_steps=5 format=3 uid="uid://covwjo52h0nqd"]
 
-[ext_resource type="Script" path="res://Scripts/bow_pickup.gd" id="1_wuun5"]
-[ext_resource type="Texture2D" uid="uid://dt4cwrv6hfk6j" path="res://Art/test_sprite.png" id="2_84mpe"]
-[ext_resource type="Texture2D" uid="uid://c7u8pvonbb8l" path="res://Art/e-key-48.png" id="3_qi7ia"]
+[ext_resource type="Script" path="res://Scripts/sword_pickup.gd" id="1_nvx6k"]
+[ext_resource type="Texture2D" uid="uid://bedprh5415crp" path="res://Art/sword_bronze.png" id="2_hig67"]
+[ext_resource type="Texture2D" uid="uid://c7u8pvonbb8l" path="res://Art/e-key-48.png" id="3_jfxgu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xxc4"]
 radius = 93.6376
 
-[node name="Bow_Pickup" type="Area2D"]
-script = ExtResource("1_wuun5")
-weapon_type = 1
+[node name="Sword_Pickup" type="Area2D" groups=["Weapon_Pickup"]]
+script = ExtResource("1_nvx6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1xxc4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, 2)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_84mpe")
+scale = Vector2(3, 3)
+texture = ExtResource("2_hig67")
 
 [node name="PickupOption" type="Control" parent="."]
 visible = false
@@ -36,11 +34,10 @@ offset_right = 52.0
 offset_bottom = 15.0
 text = "Pickup
 "
-metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="PickupOption" groups=["Weapon_Pickup"]]
 position = Vector2(24, 32)
-texture = ExtResource("3_qi7ia")
+texture = ExtResource("3_jfxgu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
