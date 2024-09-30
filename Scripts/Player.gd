@@ -43,8 +43,8 @@ func _physics_process(delta):
 	
 	input_dir = input_dir.normalized()
 	
-	velocity = input_dir * speed
 	
+	velocity = input_dir * speed
 	move_and_collide(velocity * delta)
 
 #clean this up later
