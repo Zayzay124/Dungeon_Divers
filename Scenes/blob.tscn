@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://m7817l7u3n0p"]
+
+[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="1_l6b6x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mh6uw"]
+radius = 32.9848
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k32se"]
+size = Vector2(32, 32)
+
+[node name="Blob" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mh6uw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_k32se")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("1_l6b6x")
+
+[node name="AttackSpawn" type="Node2D" parent="."]
