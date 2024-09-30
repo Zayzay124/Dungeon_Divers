@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w3gui"]
 [ext_resource type="Texture2D" uid="uid://crx8q5uhlr47c" path="res://Art/Player/axolotl_player/walk/axolotl_walkAnim-spriteSheet.png" id="3_7kbp3"]
-[ext_resource type="Texture2D" path="res://Art/Player/axolotl_player/axolotl_idleAnim-spriteSheet.png" id="3_ivvto"]
+[ext_resource type="Texture2D" uid="uid://cgbo8hdfha8rm" path="res://Art/Player/axolotl_player/idle/axolotl_idleAnim-spriteSheet.png" id="3_ivvto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
 size = Vector2(96, 96)
@@ -235,7 +235,7 @@ shape = SubResource("RectangleShape2D_2spal")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uievk")
-animation = &"idle"
+animation = &"walk"
 autoplay = "walk"
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -246,7 +246,6 @@ shape = SubResource("RectangleShape2D_xvtay")
 [node name="AttackOrigin" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="AttackOrigin"]
-visible = false
 offset_left = -24.0
 offset_top = -16.0
 offset_right = 16.0
