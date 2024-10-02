@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c65e7b4joy6fc"]
 
-[ext_resource type="Script" path="res://Scripts/sword.gd" id="1_jen3i"]
+[ext_resource type="Script" path="res://Scripts/Weapons/sword.gd" id="1_jen3i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klhkm"]
 radius = 32.0

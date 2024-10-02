@@ -1,24 +1,18 @@
-class_name Range_Attack
-extends Attack
-
+class_name Blob_Attack
+extends Enemy_Attack
 
 @export var speed:int = 500
 
-
 var velocity:Vector2 = Vector2.ZERO
-var initial_pos:Vector2
-
 
 func _ready():
 	super._ready()
-
 
 ## Constructor
 func initialize(origin:Vector2, angle:float):
 	global_position = origin
 	self.rotation = angle
 	velocity = speed * Vector2.RIGHT.rotated(angle)
-
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

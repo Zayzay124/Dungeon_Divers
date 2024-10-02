@@ -1,26 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://m7817l7u3n0p"]
+[gd_scene load_steps=11 format=3 uid="uid://m7817l7u3n0p"]
 
-[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="1_l6b6x"]
+[ext_resource type="Texture2D" uid="uid://bfo5467lee8sw" path="res://Art/test_stuff/slime spritesheet calciumtrice.png" id="1_02vbp"]
+[ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="1_l6b6x"]
+[ext_resource type="Script" path="res://Scripts/blob.gd" id="1_qha58"]
+[ext_resource type="Script" path="res://Scripts/blob_idle.gd" id="2_6ev02"]
+[ext_resource type="Script" path="res://Scripts/blob_follow.gd" id="5_m7314"]
+[ext_resource type="Script" path="res://Scripts/blob_shoot.gd" id="6_g5dev"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mh6uw"]
-radius = 32.9848
+radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k32se"]
 size = Vector2(32, 32)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0h6g"]
+radius = 104.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7uft"]
+radius = 56.0
+
 [node name="Blob" type="CharacterBody2D"]
+script = ExtResource("1_qha58")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mh6uw")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_02vbp")
+hframes = 10
+vframes = 20
+frame = 10
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_k32se")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_l6b6x")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("2_6ev02")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_m7314")
+enemy = NodePath("../..")
+
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_g5dev")
+enemy = NodePath("../..")
 
 [node name="AttackSpawn" type="Node2D" parent="."]
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_c0h6g")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_d7uft")
+
+[connection signal="attacking" from="StateMachine/Shoot" to="." method="_on_shoot"]
+[connection signal="area_entered" from="PlayerDetector" to="StateMachine/Idle" method="_on_player_detected"]
+[connection signal="area_exited" from="PlayerDetector" to="StateMachine/Follow" method="_on_player_detector_area_exited"]
+[connection signal="area_entered" from="AttackRange" to="StateMachine/Follow" method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="StateMachine/Shoot" method="_on_attack_range_area_exited"]

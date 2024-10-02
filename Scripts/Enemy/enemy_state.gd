@@ -4,7 +4,6 @@ class_name EnemyState
 signal transitioned
 
 @export var enemy: CharacterBody2D
-@export var move_speed := 100.0
 
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
 @onready var anim_player = get_parent().get_parent().get_node("AnimationPlayer")
