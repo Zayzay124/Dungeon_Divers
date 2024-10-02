@@ -13,15 +13,15 @@ radius = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k32se"]
 size = Vector2(32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c0h6g"]
-radius = 320.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_d7uft"]
-radius = 192.666
+radius = 320.4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0h6g"]
+radius = 448.071
 
 [node name="Blob" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_qha58")
-speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mh6uw")
@@ -35,6 +35,7 @@ vframes = 20
 frame = 10
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_k32se")
@@ -51,24 +52,31 @@ enemy = NodePath("../..")
 script = ExtResource("5_m7314")
 enemy = NodePath("../..")
 
-[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("Attack_Timer", "enemy")]
 script = ExtResource("6_g5dev")
+Attack_Timer = NodePath("../../AttackTimer")
 enemy = NodePath("../..")
 
 [node name="AttackSpawn" type="Node2D" parent="."]
 
-[node name="PlayerDetector" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-shape = SubResource("CircleShape2D_c0h6g")
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_d7uft")
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_c0h6g")
+
 [connection signal="attacking" from="StateMachine/Shoot" to="." method="_on_shoot"]
-[connection signal="area_entered" from="PlayerDetector" to="StateMachine/Idle" method="_on_player_detected"]
-[connection signal="area_exited" from="PlayerDetector" to="StateMachine/Follow" method="_on_player_detector_area_exited"]
+[connection signal="timeout" from="AttackTimer" to="StateMachine/Shoot" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="AttackRange" to="StateMachine/Follow" method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="AttackRange" to="StateMachine/Shoot" method="_on_attack_range_area_exited"]
+[connection signal="area_entered" from="PlayerDetector" to="StateMachine/Idle" method="_on_player_detected"]
+[connection signal="area_exited" from="PlayerDetector" to="StateMachine/Follow" method="_on_player_detector_area_exited"]

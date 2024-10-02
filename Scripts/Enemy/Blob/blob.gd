@@ -1,7 +1,7 @@
 extends CharacterBody2D
 #possibly create enemy class
 
-@export var speed = 300.0
+const speed:int = 50
 
 @export var blob_attack_scene:PackedScene = preload("res://Scenes/blob_attack.tscn")
 

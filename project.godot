@@ -60,3 +60,7 @@ interact={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Player_Hitbox"
+2d_physics/layer_4="Enemy_Hitbox"
+2d_physics/layer_5="Weapon_Pickup"
+2d_physics/layer_6="World"

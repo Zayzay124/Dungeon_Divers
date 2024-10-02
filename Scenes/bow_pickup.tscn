@@ -8,6 +8,7 @@
 radius = 93.6376
 
 [node name="Bow_Pickup" type="Area2D"]
+collision_layer = 16
 script = ExtResource("1_wuun5")
 weapon_type = 1
 

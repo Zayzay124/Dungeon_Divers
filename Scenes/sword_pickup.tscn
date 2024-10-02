@@ -8,6 +8,7 @@
 radius = 93.6376
 
 [node name="Sword_Pickup" type="Area2D" groups=["Weapon_Pickup"]]
+collision_layer = 16
 script = ExtResource("1_nvx6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
