@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bfo5467lee8sw" path="res://Art/test_stuff/slime spritesheet calciumtrice.png" id="1_02vbp"]
 [ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="1_l6b6x"]
-[ext_resource type="Script" path="res://Scripts/blob.gd" id="1_qha58"]
-[ext_resource type="Script" path="res://Scripts/blob_idle.gd" id="2_6ev02"]
-[ext_resource type="Script" path="res://Scripts/blob_follow.gd" id="5_m7314"]
-[ext_resource type="Script" path="res://Scripts/blob_shoot.gd" id="6_g5dev"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob.gd" id="1_qha58"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_idle.gd" id="2_6ev02"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_follow.gd" id="5_m7314"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_shoot.gd" id="6_g5dev"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mh6uw"]
 radius = 16.0
@@ -14,13 +14,14 @@ radius = 16.0
 size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0h6g"]
-radius = 104.0
+radius = 320.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d7uft"]
-radius = 56.0
+radius = 192.666
 
 [node name="Blob" type="CharacterBody2D"]
 script = ExtResource("1_qha58")
+speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mh6uw")

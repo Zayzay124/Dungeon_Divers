@@ -1,12 +1,13 @@
 extends EnemyState
 class_name BlobShoot
 
-signal attacking
+signal attacking(player_pos)
 
 func enter():
 	print("shoot")
 	await get_tree().create_timer(0.6).timeout
-	attacking.emit()
+	player_direction = player.global_position - enemy.global_position
+	attacking.emit(player_direction.normalized())
 
 func physics_update(_delta):
 	player_direction = player.global_position - enemy.global_position
