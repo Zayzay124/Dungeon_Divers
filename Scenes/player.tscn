@@ -141,7 +141,7 @@ collision_mask = 26
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_xvtay")
 
-[node name="AttackOrigin" type="Node2D" parent="."]
+[node name="AttackOrigin" type="Node2D" parent="." groups=["player"]]
 
 [node name="ColorRect" type="ColorRect" parent="AttackOrigin"]
 offset_left = -4.0

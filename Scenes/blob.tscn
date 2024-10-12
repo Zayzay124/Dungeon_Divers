@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://m7817l7u3n0p"]
+[gd_scene load_steps=13 format=3 uid="uid://m7817l7u3n0p"]
 
 [ext_resource type="Texture2D" uid="uid://bfo5467lee8sw" path="res://Art/test_stuff/slime spritesheet calciumtrice.png" id="1_02vbp"]
 [ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="1_l6b6x"]
@@ -10,6 +10,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_mh6uw"]
 radius = 16.0
 
+[sub_resource type="Animation" id="Animation_m0shv"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_exa23"]
+_data = {
+"idle": SubResource("Animation_m0shv")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k32se"]
 size = Vector2(32, 32)
 
@@ -19,7 +27,7 @@ radius = 256.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0h6g"]
 radius = 384.333
 
-[node name="Blob" type="CharacterBody2D"]
+[node name="Blob" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_qha58")
 
@@ -27,6 +35,9 @@ script = ExtResource("1_qha58")
 shape = SubResource("CircleShape2D_mh6uw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_exa23")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_02vbp")
@@ -63,12 +74,14 @@ enemy = NodePath("../..")
 wait_time = 1.5
 
 [node name="AttackRange" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_d7uft")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj6g5k3t4tvb6"]
+[gd_scene load_steps=5 format=3 uid="uid://cj6g5k3t4tvb6"]
 
 [ext_resource type="PackedScene" uid="uid://cjn35ya6houic" path="res://Scenes/player.tscn" id="1_i25k7"]
 [ext_resource type="PackedScene" uid="uid://vpcans4kderu" path="res://Scenes/tile_map.tscn" id="1_ylyld"]
-[ext_resource type="PackedScene" uid="uid://djxq3yfwyfc4f" path="res://Scenes/bow_pickup.tscn" id="2_o227f"]
-[ext_resource type="PackedScene" uid="uid://covwjo52h0nqd" path="res://Scenes/sword_pickup.tscn" id="3_xsrxt"]
+[ext_resource type="PackedScene" uid="uid://btdbdtx3yqq0p" path="res://Scenes/weapon_pickup.tscn" id="4_2iixh"]
 [ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/blob.tscn" id="4_immsh"]
 
 [node name="Test_Level" type="Node2D"]
@@ -13,11 +12,12 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 1, 65536, 65536, 2, 1, 131072, 1,
 
 [node name="Player" parent="." instance=ExtResource("1_i25k7")]
 
-[node name="Bow_Pickup" parent="." groups=["Weapon_Pickup"] instance=ExtResource("2_o227f")]
-position = Vector2(464, 238)
-
-[node name="Sword_Pickup" parent="." instance=ExtResource("3_xsrxt")]
-position = Vector2(221, 231)
-
 [node name="Blob" parent="." instance=ExtResource("4_immsh")]
 position = Vector2(923, 273)
+
+[node name="Weapon_Pickup" parent="." instance=ExtResource("4_2iixh")]
+position = Vector2(169, 158)
+
+[node name="Weapon_Pickup2" parent="." instance=ExtResource("4_2iixh")]
+position = Vector2(386, 161)
+weapon_type = 1

@@ -1,7 +1,6 @@
 extends CharacterBody2D
-#possibly create enemy class
 
-const speed:int = 50
+const speed:int = 75
 
 @export var blob_attack_scene:PackedScene = preload("res://Scenes/blob_attack.tscn")
 
@@ -18,3 +17,6 @@ func _on_shoot(player_pos):
 	projectile.initialize(global_position, player_pos.angle())
 	get_parent().add_child(projectile)
 	projectile.activate($AttackSpawn)
+
+func hit(amount):
+	queue_free()

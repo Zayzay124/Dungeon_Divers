@@ -43,7 +43,6 @@ func _physics_process(delta):
 	
 	input_dir = input_dir.normalized()
 	
-	
 	velocity = input_dir * speed
 	move_and_collide(velocity * delta)
 
@@ -57,8 +56,8 @@ func _input(event): #replace with match?
 		for area in $HurtBox.get_overlapping_areas(): #might run into problem where two weapons are on top of each other
 			if area.is_in_group("Weapon_Pickup"):
 				current_weapon = area.weapon_type
+				#area.picked_up(current_weapon)
 				print(current_weapon)
-
 
 func dash():
 	speed += 300
@@ -98,5 +97,5 @@ func hit(amount):
 func orient():
 	#80 is from center of player to edge of player 
 	##TODO get rid of magic number 80
-	$AttackOrigin.position = 80 * last_dir
+	$AttackOrigin.position = 16 * last_dir
 	$AttackOrigin.rotation = last_dir.angle()

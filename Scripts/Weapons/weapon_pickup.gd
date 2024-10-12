@@ -6,15 +6,18 @@ enum WEAPON {SWORD,BOW}
 @export var weapon_type:WEAPON
 
 func _ready():
-	pass # Replace with function body.
+	print(weapon_type)
+	$AnimatedSprite2D.frame = weapon_type
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func picked_up(weapon:WEAPON):
+	self.weapon_type = weapon
+	$AnimatedSprite2D.frame = weapon_type
+
 func _on_body_entered(body):
-	$PickupOption.visible = true
+	$Options.visible = true
 
 func _on_body_exited(body):
-	$PickupOption.visible = false
+	$Options.visible = false

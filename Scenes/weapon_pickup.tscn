@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://btdbdtx3yqq0p"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/weapon_pickup.gd" id="1_tgrtx"]
+[ext_resource type="Texture2D" uid="uid://2rga76ptql12" path="res://Art/test_stuff/New Piskel.png" id="2_lnw4w"]
+[ext_resource type="Texture2D" uid="uid://b6t3bwgn5m78f" path="res://Art/test_stuff/e_key.jpg" id="3_2yy7x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xxc4"]
+radius = 25.2982
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyo0p"]
+atlas = ExtResource("2_lnw4w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrmna"]
+atlas = ExtResource("2_lnw4w")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cscrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyo0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrmna")
+}],
+"loop": true,
+"name": &"weapons",
+"speed": 5.0
+}]
+
+[node name="Weapon_Pickup" type="Area2D" groups=["Weapon_Pickup"]]
+collision_layer = 16
+script = ExtResource("1_tgrtx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1xxc4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Weapon_Pickup"]]
+sprite_frames = SubResource("SpriteFrames_cscrr")
+animation = &"weapons"
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -72.0
+offset_top = -72.0
+offset_right = -32.0
+offset_bottom = -32.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PickupText" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_right = -0.2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = 31.0
+text = "Pickup
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="E_Key" type="Sprite2D" parent="Options"]
+position = Vector2(32, 40)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_2yy7x")
+
+[node name="DescText" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 169.0
+offset_bottom = 31.0
+text = "Description"
+
+[node name="D_Key" type="Sprite2D" parent="Options"]
+position = Vector2(128, 40)
+scale = Vector2(0.106667, 0.0933333)
+texture = ExtResource("3_2yy7x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
