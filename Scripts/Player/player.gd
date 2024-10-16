@@ -42,32 +42,22 @@ func _physics_process(delta):
 		last_dir = input_dir
 	
 	input_dir = input_dir.normalized()
-	
-	velocity = input_dir * speed
-	move_and_collide(velocity * delta)
 
-#clean this up later
+#clean this up later(soon acutally)
 func _input(event): #replace with match?
-	if event.is_action_pressed("dash") and can_dash:
-		dash()
+	#if event.is_action_pressed("dash") and can_dash:
+	#	dash()
 	if event.is_action_pressed("weapon_attack"):
 		weapon_attack()
 	if event.is_action_pressed("interact"):
 		for area in $HurtBox.get_overlapping_areas(): #might run into problem where two weapons are on top of each other
 			if area.is_in_group("Weapon_Pickup"):
+				var old_weapon = current_weapon
 				current_weapon = area.weapon_type
-				#area.picked_up(current_weapon)
-				print(current_weapon)
-
-func dash():
-	speed += 300
-	can_dash = false
-	is_invincible = true
-	velocity = input_dir * dash_speed
-	await get_tree().create_timer(0.5).timeout
-	speed = 300
-	can_dash = true
-	is_invincible = false
+				area.picked_up(old_weapon)
+	if event.is_action_pressed("description"):
+		for area in $HurtBox.get_overlapping_areas():
+			area.change_desc_visibility()
 
 # Would like to decouple this later
 func weapon_attack():

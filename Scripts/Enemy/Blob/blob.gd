@@ -5,7 +5,7 @@ const speed:int = 75
 @export var blob_attack_scene:PackedScene = preload("res://Scenes/blob_attack.tscn")
 
 func _physics_process(delta):
-	if velocity.x>0:
+	if velocity.x > 0:
 		$Sprite2D.flip_h = false
 	else:
 		$Sprite2D.flip_h = true

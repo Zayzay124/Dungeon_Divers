@@ -1,18 +1,19 @@
 extends Node
 
-@export var initial_state:EnemyState
+@export var initial_state:PlayerState
 
-var current_state:EnemyState
+var current_state:PlayerState
 var states:Dictionary = {}
 
 func _ready():
 	for child in get_children():
-		if child is EnemyState:
+		if child is PlayerState:
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transition)
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
+	print(states)
 
 func _process(delta):
 	if current_state:

@@ -17,7 +17,4 @@ position = Vector2(923, 273)
 
 [node name="Weapon_Pickup" parent="." instance=ExtResource("4_2iixh")]
 position = Vector2(169, 158)
-
-[node name="Weapon_Pickup2" parent="." instance=ExtResource("4_2iixh")]
-position = Vector2(386, 161)
 weapon_type = 1

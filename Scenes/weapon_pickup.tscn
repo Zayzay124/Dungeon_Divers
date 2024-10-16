@@ -36,11 +36,12 @@ script = ExtResource("1_tgrtx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1xxc4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Weapon_Pickup"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cscrr")
 animation = &"weapons"
 
 [node name="Options" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -72.0
@@ -79,6 +80,25 @@ text = "Description"
 position = Vector2(128, 40)
 scale = Vector2(0.106667, 0.0933333)
 texture = ExtResource("3_2yy7x")
+
+[node name="Description" type="Control" parent="Options"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 52.0
+offset_top = -32.0
+offset_right = 92.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Options/Description"]
+layout_mode = 0
+offset_left = -180.0
+offset_top = -24.0
+offset_right = 252.0
+offset_bottom = 51.0
+text = " A rusted old sword. The metal is corroded from years of wear and tear, but is still usable. There's an engraving on it, that you can read as \"A.A.D\""
+vertical_alignment = 3
+autowrap_mode = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
