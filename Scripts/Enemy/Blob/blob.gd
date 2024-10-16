@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const speed:int = 75
 
+var pushback:int = 1000
+
 @export var blob_attack_scene:PackedScene = preload("res://Scenes/blob_attack.tscn")
 
 func _physics_process(delta):
@@ -17,6 +19,7 @@ func _on_shoot(player_pos):
 	projectile.initialize(global_position, player_pos.angle())
 	get_parent().add_child(projectile)
 	projectile.activate($AttackSpawn)
+	velocity -= player_pos * pushback
 
 func hit(amount):
 	queue_free()

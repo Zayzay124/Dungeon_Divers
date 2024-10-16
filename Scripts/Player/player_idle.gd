@@ -10,3 +10,9 @@ func enter():
 func physics_update(delta):
 	if player.input_dir != Vector2.ZERO:
 		transitioned.emit(self,"move")
+
+func _input(event):
+	if event.is_action_pressed("dash"):
+		transitioned.emit(self,"dash")
+	if event.is_action_pressed("weapon_attack"):
+		transitioned.emit(self,"attack")

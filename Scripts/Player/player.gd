@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 ##Signals
 signal taken_damage # talks to HUD
-#picked up time
 
 @export var speed:int = 300
 @export var health:int = 0
@@ -19,6 +18,7 @@ var can_dash:bool = true
 
 var is_invincible:bool = false
 
+
 ##PreLoad Scenes
 @export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
 @export var melee_attack_scene:PackedScene = preload("res://Scenes/sword.tscn")
@@ -27,8 +27,6 @@ var is_invincible:bool = false
 var melee:Node
 
 func _ready():
-	#Instantiate attack scenes
-	#add them as children
 	melee = melee_attack_scene.instantiate()
 	add_child(melee)
 
@@ -43,12 +41,7 @@ func _physics_process(delta):
 	
 	input_dir = input_dir.normalized()
 
-#clean this up later(soon acutally)
-func _input(event): #replace with match?
-	#if event.is_action_pressed("dash") and can_dash:
-	#	dash()
-	if event.is_action_pressed("weapon_attack"):
-		weapon_attack()
+func _input(event):
 	if event.is_action_pressed("interact"):
 		for area in $HurtBox.get_overlapping_areas(): #might run into problem where two weapons are on top of each other
 			if area.is_in_group("Weapon_Pickup"):
@@ -85,7 +78,11 @@ func hit(amount):
 	#modify health
 
 func orient():
-	#80 is from center of player to edge of player 
-	##TODO get rid of magic number 80
+	#16 is from center of player to edge of player 
+	##TODO get rid of magic number 16
 	$AttackOrigin.position = 16 * last_dir
 	$AttackOrigin.rotation = last_dir.angle()
+
+
+func _on_attack():
+	weapon_attack()

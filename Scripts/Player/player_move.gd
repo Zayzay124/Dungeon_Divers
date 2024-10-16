@@ -19,5 +19,5 @@ func physics_update(delta):
 func _input(event):
 	if event.is_action_pressed("dash"):
 		transitioned.emit(self,"dash")
-	#if event.is_action_pressed("weapon_attack"):
-	#	weapon_attack()
+	if event.is_action_pressed("weapon_attack"):
+		transitioned.emit(self,"attack")
