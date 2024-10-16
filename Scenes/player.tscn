@@ -11,6 +11,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
 size = Vector2(16, 16)
 
+[sub_resource type="Animation" id="Animation_ddntg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hfmie"]
+resource_name = "dash"
+step = 0.0833333
+
 [sub_resource type="Animation" id="Animation_aliaf"]
 resource_name = "idle"
 length = 1.16668
@@ -29,21 +48,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
 
-[sub_resource type="Animation" id="Animation_ddntg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_lw0et"]
 resource_name = "walk"
 step = 0.0833333
@@ -59,10 +63,6 @@ tracks/0/keys = {
 "update": 1,
 "values": []
 }
-
-[sub_resource type="Animation" id="Animation_hfmie"]
-resource_name = "dash"
-step = 0.0833333
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x4haj"]
 _data = {
@@ -113,8 +113,10 @@ player = NodePath("../..")
 [node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
 one_shot = true
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack_origin", "player")]
 script = ExtResource("7_m3o2t")
+attack_origin = NodePath("../../AttackOrigin")
+player = NodePath("../..")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_mask = 26
@@ -133,4 +135,3 @@ offset_bottom = 4.0
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
-[connection signal="attacking" from="StateMachine/Attack" to="." method="_on_attack"]

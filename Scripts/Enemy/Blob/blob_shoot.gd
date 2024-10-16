@@ -2,6 +2,7 @@ class_name BlobShoot
 extends EnemyState
 
 @export var Attack_Timer:Timer
+@export var attack_spawn:Node2D
 @export var blob_attack_scene:PackedScene = preload("res://Scenes/blob_attack.tscn")
 
 func enter():
@@ -27,5 +28,5 @@ func shoot():
 	var projectile = blob_attack_scene.instantiate()
 	projectile.initialize(enemy.global_position, player_direction.angle())
 	get_parent().add_child(projectile)
-	projectile.activate($"../../AttackSpawn")
+	projectile.activate(attack_spawn)
 	enemy.velocity -= player_direction.normalized() * enemy.pushback

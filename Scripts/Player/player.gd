@@ -14,7 +14,6 @@ var input_dir:Vector2 = Vector2.ZERO
 var last_dir:Vector2 = Vector2.ZERO
 
 var dash_dir:Vector2 = Vector2.ZERO
-var can_dash:bool = true
 
 var is_invincible:bool = false
 
@@ -52,38 +51,13 @@ func _input(event):
 		for area in $HurtBox.get_overlapping_areas():
 			area.change_desc_visibility()
 
-# Would like to decouple this later
-func weapon_attack():
-	match current_weapon:
-		Weapon_Pickup.WEAPON.SWORD:
-			melee_attack()
-		Weapon_Pickup.WEAPON.BOW:
-			ranged_attack()
-
-func melee_attack():
-	melee.activate($AttackOrigin)
-
-func ranged_attack():
-	var projectile = range_attack_scene.instantiate()
-	projectile.initialize($AttackOrigin.global_position, last_dir.angle())
-	get_parent().add_child(projectile)
-	projectile.activate($AttackOrigin)
-
-func magic_attack():
-	pass
-
 func hit(amount):
 	print("taken_damage")
 	health -= amount
 	taken_damage.emit()
-	#modify health
 
 func orient():
-	#16 is from center of player to edge of player 
 	##TODO get rid of magic number 16
+	#16 is from center of player to edge of player 
 	$AttackOrigin.position = 16 * last_dir
 	$AttackOrigin.rotation = last_dir.angle()
-
-
-func _on_attack():
-	weapon_attack()
