@@ -3,7 +3,7 @@ class_name BlobFollow
 
 func enter():
 	print("follow")
-	await get_tree().create_timer(0.6).timeout
+	anim_player.play("walk")
 
 func physics_update(_delta):
 	player_direction = player.global_position - enemy.global_position

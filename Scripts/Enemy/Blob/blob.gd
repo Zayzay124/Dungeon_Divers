@@ -14,12 +14,5 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func _on_shoot(player_pos):
-	var projectile = blob_attack_scene.instantiate()
-	projectile.initialize(global_position, player_pos.angle())
-	get_parent().add_child(projectile)
-	projectile.activate($AttackSpawn)
-	velocity -= player_pos * pushback
-
 func hit(amount):
 	queue_free()

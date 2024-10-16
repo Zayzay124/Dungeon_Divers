@@ -4,8 +4,9 @@ class_name BlobIdle
 
 func enter():
 	print("sleeping")
+	anim_player.play("idle")
 	#play sleep animaiton
-	#anim_player.play("")
+
 
 func physics_update(_delta):
 	enemy.velocity = Vector2.ZERO

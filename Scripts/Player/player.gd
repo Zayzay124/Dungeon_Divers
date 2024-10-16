@@ -74,6 +74,7 @@ func magic_attack():
 
 func hit(amount):
 	print("taken_damage")
+	health -= amount
 	taken_damage.emit()
 	#modify health
 

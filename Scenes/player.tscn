@@ -78,6 +78,7 @@ size = Vector2(32, 32)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 32
 script = ExtResource("1_w3gui")
+health = 20
 dash_speed = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
