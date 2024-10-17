@@ -11,9 +11,7 @@ signal taken_damage # talks to HUD
 var current_weapon:Weapon_Pickup.WEAPON
 
 var input_dir:Vector2 = Vector2.ZERO
-var last_dir:Vector2 = Vector2.ZERO
-
-var dash_dir:Vector2 = Vector2.ZERO
+var last_dir:Vector2 = Vector2.RIGHT
 
 var is_invincible:bool = false
 
@@ -29,7 +27,7 @@ func _ready():
 	melee = melee_attack_scene.instantiate()
 	add_child(melee)
 
-func _process(delta):
+func _process(_delta):
 	orient()
 
 func _physics_process(delta):
@@ -39,6 +37,7 @@ func _physics_process(delta):
 		last_dir = input_dir
 	
 	input_dir = input_dir.normalized()
+	move_and_collide(velocity * delta)
 
 func _input(event):
 	if event.is_action_pressed("interact"):

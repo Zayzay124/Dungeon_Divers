@@ -18,7 +18,7 @@ func initialize(origin:Vector2, angle:float):
 func _physics_process(delta):
 	global_position += velocity * delta
 
-func activate(origin):
+func activate(_origin):
 	visible = true
 	$Detector.disabled = false
 

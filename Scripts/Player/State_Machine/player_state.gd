@@ -18,3 +18,6 @@ func update(_delta):
 
 func physics_update(_delta):
 	pass
+
+func player_movement():
+	player.velocity = player.input_dir * player.speed

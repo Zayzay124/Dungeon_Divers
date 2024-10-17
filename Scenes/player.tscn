@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_w3gui"]
 [ext_resource type="Texture2D" uid="uid://cgbo8hdfha8rm" path="res://Art/Player/axolotl_player/idle/axolotl_idleAnim-spriteSheet.png" id="2_hd44t"]
-[ext_resource type="Script" path="res://Scripts/Player/player_state_machine.gd" id="3_l8dm7"]
-[ext_resource type="Script" path="res://Scripts/Player/player_idle.gd" id="4_3sg6o"]
-[ext_resource type="Script" path="res://Scripts/Player/player_move.gd" id="5_yfn3s"]
-[ext_resource type="Script" path="res://Scripts/Player/player_dash.gd" id="6_7ds42"]
-[ext_resource type="Script" path="res://Scripts/Player/player_attack.gd" id="7_m3o2t"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_state_machine.gd" id="3_l8dm7"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_idle.gd" id="4_3sg6o"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_move.gd" id="5_yfn3s"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_dash.gd" id="6_7ds42"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_attack.gd" id="7_m3o2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
 size = Vector2(16, 16)

@@ -18,7 +18,7 @@ func physics_update(_delta):
 	
 	enemy.velocity = Vector2.ZERO
 
-func _on_attack_range_area_exited(area):
+func _on_attack_range_area_exited(_area):
 	transitioned.emit(self,"follow")
 
 func _on_attack_timer_timeout():
