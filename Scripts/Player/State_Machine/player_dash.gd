@@ -21,7 +21,6 @@ func exit():
 func physics_update(delta):
 	if !dashing:
 		transitioned.emit(self,"idle")
-	player.move_and_collide(player.velocity * delta)
 
 func dash():
 	if player.input_dir != Vector2.ZERO:

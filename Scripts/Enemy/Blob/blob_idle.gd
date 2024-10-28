@@ -4,11 +4,10 @@ class_name BlobIdle
 
 func enter():
 	print("sleeping")
-	#play sleep animaiton
-	#anim_player.play("")
+	anim_player.play("idle")
 
 func physics_update(_delta):
 	enemy.velocity = Vector2.ZERO
 
-func _on_player_detected(area):
+func _on_player_detected(_area):
 	transitioned.emit(self,"follow")

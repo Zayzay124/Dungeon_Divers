@@ -1,32 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjn35ya6houic"]
+[gd_scene load_steps=15 format=3 uid="uid://cjn35ya6houic"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_w3gui"]
 [ext_resource type="Texture2D" uid="uid://cgbo8hdfha8rm" path="res://Art/Player/axolotl_player/idle/axolotl_idleAnim-spriteSheet.png" id="2_hd44t"]
-[ext_resource type="Script" path="res://Scripts/Player/player_state_machine.gd" id="3_l8dm7"]
-[ext_resource type="Script" path="res://Scripts/Player/player_idle.gd" id="4_3sg6o"]
-[ext_resource type="Script" path="res://Scripts/Player/player_move.gd" id="5_yfn3s"]
-[ext_resource type="Script" path="res://Scripts/Player/player_dash.gd" id="6_7ds42"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_state_machine.gd" id="3_l8dm7"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_idle.gd" id="4_3sg6o"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_move.gd" id="5_yfn3s"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_dash.gd" id="6_7ds42"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_attack.gd" id="7_m3o2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
 size = Vector2(16, 16)
-
-[sub_resource type="Animation" id="Animation_aliaf"]
-resource_name = "idle"
-length = 0.416675
-loop_mode = 1
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-}
 
 [sub_resource type="Animation" id="Animation_ddntg"]
 length = 0.001
@@ -41,6 +24,28 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hfmie"]
+resource_name = "dash"
+step = 0.0833333
+
+[sub_resource type="Animation" id="Animation_aliaf"]
+resource_name = "idle"
+length = 1.16668
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
 
 [sub_resource type="Animation" id="Animation_lw0et"]
@@ -59,10 +64,6 @@ tracks/0/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_hfmie"]
-resource_name = "dash"
-step = 0.0833333
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x4haj"]
 _data = {
 "RESET": SubResource("Animation_ddntg"),
@@ -77,6 +78,7 @@ size = Vector2(32, 32)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 32
 script = ExtResource("1_w3gui")
+health = 20
 dash_speed = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -110,6 +112,11 @@ player = NodePath("../..")
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
 one_shot = true
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack_origin", "player")]
+script = ExtResource("7_m3o2t")
+attack_origin = NodePath("../../AttackOrigin")
+player = NodePath("../..")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_mask = 26

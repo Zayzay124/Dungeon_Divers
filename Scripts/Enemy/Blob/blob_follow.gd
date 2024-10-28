@@ -3,16 +3,16 @@ class_name BlobFollow
 
 func enter():
 	print("follow")
-	await get_tree().create_timer(0.6).timeout
+	anim_player.play("walk")
 
 func physics_update(_delta):
 	player_direction = player.global_position - enemy.global_position
 	
 	enemy.velocity = player_direction.normalized() * enemy.speed
 
-func _on_attack_range_area_entered(area):
+func _on_attack_range_area_entered(_area):
 	transitioned.emit(self,"shoot")
 
 
-func _on_player_detector_area_exited(area):
+func _on_player_detector_area_exited(_area):
 	transitioned.emit(self,"idle")
