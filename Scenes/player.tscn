@@ -89,7 +89,6 @@ collision_mask = 32
 script = ExtResource("1_w3gui")
 speed = 250
 health = 20
-dash_speed = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2spal")

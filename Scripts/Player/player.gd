@@ -6,7 +6,6 @@ signal taken_damage # talks to HUD
 @export var speed:int = 300
 @export var health:int = 0
 @export var magic_points:int = 50
-@export var dash_speed:int = 10
 
 var current_weapon:Weapon_Pickup.WEAPON
 
