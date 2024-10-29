@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://glawjw7b40a4"]
-
-[ext_resource type="PackedScene" uid="uid://crk3d40yb8qdu" path="res://export/squeebo.tscn" id="1_ec0ex"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="Node2D" parent="." instance=ExtResource("1_ec0ex")]

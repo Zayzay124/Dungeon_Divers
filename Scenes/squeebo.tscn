@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7tx570km2cp0"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo.gd" id="1_evbyk"]
+[ext_resource type="Texture2D" uid="uid://d2ypcqacrb6ll" path="res://icon.svg" id="2_5hxra"]
+[ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="3_rn2o8"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_idle.gd" id="4_4ap4x"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_follow.gd" id="5_8qsa7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykvx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gar2b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6m08"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1j18"]
+radius = 72.0
+
+[node name="Squeebo" type="CharacterBody2D"]
+script = ExtResource("1_evbyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ykvx5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.57628e-07, -2.38419e-07)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_5hxra")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_gar2b")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_rn2o8")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_4ap4x")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("5_8qsa7")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+
+[node name="AttackSpawn" type="Node2D" parent="."]
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_c6m08")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_s1j18")
+
+[connection signal="area_entered" from="AttackRange" to="StateMachine/Follow" method="_on_attack_range_area_entered"]
+[connection signal="area_entered" from="PlayerDetector" to="StateMachine/Idle" method="_on_player_detected"]
+[connection signal="area_exited" from="PlayerDetector" to="StateMachine/Follow" method="_on_player_detector_area_exited"]

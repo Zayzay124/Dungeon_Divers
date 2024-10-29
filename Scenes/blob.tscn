@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="1_l6b6x"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob.gd" id="1_qha58"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_idle.gd" id="2_6ev02"]
-[ext_resource type="Texture2D" uid="uid://dlpmkl3n7voth" path="res://Art/Enemy/slime_enemy/slimeAnim-spriteSheet.png" id="2_y7ppj"]
+[ext_resource type="Texture2D" uid="uid://7nig74ee4pej" path="res://Art/Enemy/slime_enemy/slimeAnim-spriteSheet.png" id="2_y7ppj"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_follow.gd" id="5_m7314"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_shoot.gd" id="6_g5dev"]
 
@@ -133,14 +133,14 @@ enemy = NodePath("../..")
 
 [node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("Attack_Timer", "attack_spawn", "enemy")]
 script = ExtResource("6_g5dev")
-Attack_Timer = NodePath("../../AttackTimer")
+Attack_Timer = NodePath("AttackTimer")
 attack_spawn = NodePath("../../AttackSpawn")
 enemy = NodePath("../..")
 
-[node name="AttackSpawn" type="Node2D" parent="."]
-
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="StateMachine/Shoot"]
 wait_time = 1.5
+
+[node name="AttackSpawn" type="Node2D" parent="."]
 
 [node name="AttackRange" type="Area2D" parent="."]
 visible = false
@@ -156,7 +156,7 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_c0h6g")
 
-[connection signal="timeout" from="AttackTimer" to="StateMachine/Shoot" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/AttackTimer" to="StateMachine/Shoot" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="AttackRange" to="StateMachine/Follow" method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="AttackRange" to="StateMachine/Shoot" method="_on_attack_range_area_exited"]
 [connection signal="area_entered" from="PlayerDetector" to="StateMachine/Idle" method="_on_player_detected"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjn35ya6houic"]
+[gd_scene load_steps=19 format=3 uid="uid://cjn35ya6houic"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_w3gui"]
 [ext_resource type="Texture2D" uid="uid://cgbo8hdfha8rm" path="res://Art/Player/axolotl_player/idle/axolotl_idleAnim-spriteSheet.png" id="2_hd44t"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_move.gd" id="5_yfn3s"]
 [ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_dash.gd" id="6_7ds42"]
 [ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_attack.gd" id="7_m3o2t"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_7lgql"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_l2ycd"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_238ul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
 size = Vector2(16, 16)
@@ -75,9 +78,16 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtay"]
 size = Vector2(32, 32)
 
+[sub_resource type="Resource" id="Resource_5ippx"]
+script = ExtResource("10_238ul")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 32
 script = ExtResource("1_w3gui")
+speed = 250
 health = 20
 dash_speed = 80
 
@@ -133,5 +143,22 @@ offset_right = 4.0
 offset_bottom = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("8_7lgql")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+script = ExtResource("9_l2ycd")
+follow_mode = 5
+follow_target = NodePath("..")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_5ippx")
+follow_damping = true
+follow_damping_value = Vector2(0.25, 0.25)
+dead_zone_width = 0.118
+dead_zone_height = 0.151
 
 [connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
