@@ -14,6 +14,7 @@ var last_dir:Vector2 = Vector2.RIGHT
 
 var is_invincible:bool = false
 
+var respawn_point:Vector2 = Vector2.ZERO
 
 ##PreLoad Scenes
 @export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
@@ -53,9 +54,16 @@ func hit(amount):
 	print("taken_damage")
 	health -= amount
 	taken_damage.emit()
+	if health <= 0:
+		pitfall()
+
+func pitfall():
+	position = respawn_point
 
 func orient():
-	##TODO get rid of magic number 16
-	#16 is from center of player to edge of player 
 	$AttackOrigin.position = 16 * last_dir
 	$AttackOrigin.rotation = last_dir.angle()
+
+
+func _on_res_point_timer_timeout():
+	respawn_point = position

@@ -2,10 +2,10 @@ class_name Player_Dash
 extends PlayerState
 
 var dash_dir:Vector2 = Vector2.ZERO
-var dash_speed:int = 800
+var dash_speed:int = 600
 var dashing:bool = false
 
-@export var dash_duration = 0.2
+@export var dash_duration:float = 0.2
 @onready var Dash_Timer = $DashTimer
 
 func enter():

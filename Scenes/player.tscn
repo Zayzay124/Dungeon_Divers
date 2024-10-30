@@ -91,6 +91,7 @@ speed = 250
 health = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_2spal")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -117,6 +118,7 @@ player = NodePath("../..")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("6_7ds42")
+dash_duration = 0.25
 player = NodePath("../..")
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
@@ -128,6 +130,7 @@ attack_origin = NodePath("../../AttackOrigin")
 player = NodePath("../..")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_mask = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -135,13 +138,8 @@ shape = SubResource("RectangleShape2D_xvtay")
 
 [node name="AttackOrigin" type="Node2D" parent="." groups=["player"]]
 
-[node name="ColorRect" type="ColorRect" parent="AttackOrigin"]
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -160,4 +158,8 @@ follow_damping_value = Vector2(0.25, 0.25)
 dead_zone_width = 0.118
 dead_zone_height = 0.151
 
+[node name="ResPointTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="ResPointTimer" to="." method="_on_res_point_timer_timeout"]

@@ -3,7 +3,7 @@ class_name SqueeboIdle
 
 
 func enter():
-	print("sleeping")
+	print("follow")
 	anim_player.play("idle")
 
 func physics_update(_delta):
