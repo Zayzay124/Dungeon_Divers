@@ -2,7 +2,7 @@ class_name Player_Dash
 extends PlayerState
 
 var dash_dir:Vector2 = Vector2.ZERO
-var dash_speed:int = 600
+var dash_speed:int = 300
 var dashing:bool = false
 
 @export var dash_duration:float = 0.2

@@ -87,7 +87,7 @@ ease = 2
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 32
 script = ExtResource("1_w3gui")
-speed = 250
+speed = 100
 health = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -118,7 +118,6 @@ player = NodePath("../..")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("6_7ds42")
-dash_duration = 0.25
 player = NodePath("../..")
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
@@ -140,7 +139,7 @@ shape = SubResource("RectangleShape2D_xvtay")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -151,7 +150,7 @@ script = ExtResource("8_7lgql")
 script = ExtResource("9_l2ycd")
 follow_mode = 5
 follow_target = NodePath("..")
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 tween_resource = SubResource("Resource_5ippx")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
