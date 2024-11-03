@@ -63,7 +63,11 @@ func pitfall():
 func orient():
 	$AttackOrigin.position = 16 * last_dir
 	$AttackOrigin.rotation = last_dir.angle()
-
+	
+	if last_dir.x < 0:
+		$Sprite2D.scale.x = -1 #Flip left
+	elif last_dir.x > 0:
+		$Sprite2D.scale.x = 1 #Flip right
 
 func _on_res_point_timer_timeout():
 	respawn_point = position
