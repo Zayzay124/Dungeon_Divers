@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvs6b70qh648d"]
+[gd_scene load_steps=3 format=3 uid="uid://bvs6b70qh648d"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_53fut"]
+[ext_resource type="Texture2D" uid="uid://b0i5hpjwh5f0c" path="res://Art/HUD/Heart_Full.webp" id="2_a7ao6"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -10,3 +11,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_53fut")
+
+[node name="Health" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("2_a7ao6")
+stretch_mode = 4
+
+[node name="Health2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 64.0
+offset_right = 192.0
+offset_bottom = 128.0
+texture = ExtResource("2_a7ao6")
+stretch_mode = 4
+
+[node name="Health3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 128.0
+offset_right = 256.0
+offset_bottom = 128.0
+texture = ExtResource("2_a7ao6")
+stretch_mode = 4
+
+[node name="Health4" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 192.0
+offset_right = 320.0
+offset_bottom = 128.0
+texture = ExtResource("2_a7ao6")
+stretch_mode = 4

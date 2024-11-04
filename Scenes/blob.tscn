@@ -141,6 +141,7 @@ enemy = NodePath("../..")
 wait_time = 1.5
 
 [node name="AttackSpawn" type="Node2D" parent="."]
+texture_filter = 1
 
 [node name="AttackRange" type="Area2D" parent="."]
 visible = false

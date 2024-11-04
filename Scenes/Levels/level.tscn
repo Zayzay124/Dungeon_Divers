@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://mnp7nx4orw8h"]
+[gd_scene load_steps=8 format=3 uid="uid://mnp7nx4orw8h"]
 
 [ext_resource type="PackedScene" uid="uid://cjn35ya6houic" path="res://Scenes/player.tscn" id="1_rj1uv"]
 [ext_resource type="Texture2D" uid="uid://16v0kf8bshk" path="res://Art/Tilemap/Top Down Garden Castle/Top down Garden Castle.png" id="2_vqdcm"]
 [ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/blob.tscn" id="4_ab2fn"]
 [ext_resource type="PackedScene" uid="uid://btdbdtx3yqq0p" path="res://Scenes/weapon_pickup.tscn" id="4_ynhvr"]
+[ext_resource type="PackedScene" uid="uid://bvs6b70qh648d" path="res://Scenes/hud.tscn" id="5_8vrro"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mv0s"]
 texture = ExtResource("2_vqdcm")
@@ -572,3 +573,7 @@ collision_layer = 3
 [node name="Weapon_Pickup" parent="." instance=ExtResource("4_ynhvr")]
 texture_filter = 1
 position = Vector2(-8, -72)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_8vrro")]

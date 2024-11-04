@@ -1,11 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://btdbdtx3yqq0p"]
+[gd_scene load_steps=17 format=3 uid="uid://btdbdtx3yqq0p"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_pickup.gd" id="1_tgrtx"]
 [ext_resource type="Texture2D" uid="uid://2rga76ptql12" path="res://Art/test_stuff/New Piskel.png" id="2_lnw4w"]
+[ext_resource type="Texture2D" uid="uid://3o0x3k0jk0p6" path="res://Art/Weapons/Sword-Sheet.png" id="2_mskar"]
 [ext_resource type="Texture2D" uid="uid://b6t3bwgn5m78f" path="res://Art/test_stuff/e_key.jpg" id="3_2yy7x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xxc4"]
 radius = 25.2982
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ac3t"]
+atlas = ExtResource("2_mskar")
+region = Rect2(0, 0, 35, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssxpu"]
+atlas = ExtResource("2_mskar")
+region = Rect2(35, 0, 35, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt1r2"]
+atlas = ExtResource("2_mskar")
+region = Rect2(70, 0, 35, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa0ob"]
+atlas = ExtResource("2_mskar")
+region = Rect2(0, 72, 35, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdnta"]
+atlas = ExtResource("2_mskar")
+region = Rect2(35, 72, 35, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0jij"]
+atlas = ExtResource("2_mskar")
+region = Rect2(70, 72, 35, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7vor"]
+atlas = ExtResource("2_mskar")
+region = Rect2(0, 144, 35, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn5t3"]
+atlas = ExtResource("2_mskar")
+region = Rect2(35, 144, 35, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyo0p"]
 atlas = ExtResource("2_lnw4w")
@@ -17,6 +50,35 @@ region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cscrr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ac3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssxpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt1r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa0ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdnta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0jij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7vor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn5t3")
+}],
+"loop": true,
+"name": &"sword_idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kyo0p")
@@ -34,11 +96,12 @@ collision_layer = 16
 script = ExtResource("1_tgrtx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_1xxc4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cscrr")
-animation = &"weapons"
+animation = &"sword_idle"
 
 [node name="Options" type="Control" parent="."]
 visible = false
