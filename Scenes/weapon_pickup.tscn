@@ -77,7 +77,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sword_idle",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
