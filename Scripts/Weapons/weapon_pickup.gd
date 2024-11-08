@@ -1,7 +1,7 @@
 class_name Weapon_Pickup
 extends Node
 
-enum WEAPON {SWORD,BOW}
+enum WEAPON {NONE,SWORD,BOW}
 
 @export var weapon_type:WEAPON
 
@@ -12,6 +12,8 @@ func _process(_delta):
 	pass
 
 func picked_up(weapon:WEAPON):
+	if weapon == WEAPON.NONE:
+		queue_free()
 	self.weapon_type = weapon
 	$AnimatedSprite2D.frame = weapon_type
 

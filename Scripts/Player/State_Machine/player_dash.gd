@@ -9,7 +9,6 @@ var dashing:bool = false
 @onready var Dash_Timer = $DashTimer
 
 func enter():
-	print("player dash")
 	dashing = true
 	Dash_Timer.start(dash_duration)
 	anim_player.play("dash")

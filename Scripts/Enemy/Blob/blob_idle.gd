@@ -3,7 +3,6 @@ class_name BlobIdle
 
 
 func enter():
-	print("sleeping")
 	anim_player.play("idle")
 
 func physics_update(_delta):

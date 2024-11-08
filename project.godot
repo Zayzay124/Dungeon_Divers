@@ -78,3 +78,4 @@ description={
 2d_physics/layer_4="Enemy_Hitbox"
 2d_physics/layer_5="Weapon_Pickup"
 2d_physics/layer_6="World"
+2d_physics/layer_7="Falls"

@@ -6,7 +6,6 @@ extends PlayerState
 var attacking:bool = false
 
 func enter():
-	print("player attack")
 	weapon_attack()
 	await get_tree().create_timer(.5).timeout
 	transitioned.emit(self,"move")
@@ -16,6 +15,8 @@ func physics_update(delta):
 
 func weapon_attack():
 	match player.current_weapon:
+		Weapon_Pickup.WEAPON.NONE:
+			print("nothing")
 		Weapon_Pickup.WEAPON.SWORD:
 			melee_attack()
 		Weapon_Pickup.WEAPON.BOW:

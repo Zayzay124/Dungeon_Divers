@@ -15,6 +15,7 @@ var last_dir:Vector2 = Vector2.RIGHT
 var is_invincible:bool = false
 
 var respawn_point:Vector2 = Vector2.ZERO
+var has_fallen:bool = false
 
 ##PreLoad Scenes
 @export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
@@ -24,6 +25,7 @@ var respawn_point:Vector2 = Vector2.ZERO
 var melee:Node
 
 func _ready():
+	print(current_weapon)
 	melee = melee_attack_scene.instantiate()
 	add_child(melee)
 
@@ -41,7 +43,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		for area in $HurtBox.get_overlapping_areas(): #might run into problem where two weapons are on top of each other
+		for area in $HurtBox.get_overlapping_areas():
 			if area.is_in_group("Weapon_Pickup"):
 				var old_weapon = current_weapon
 				current_weapon = area.weapon_type
@@ -49,13 +51,19 @@ func _input(event):
 	if event.is_action_pressed("description"):
 		for area in $HurtBox.get_overlapping_areas():
 			area.change_desc_visibility()
+	if event.is_action_pressed("ui_cancel"):
+		pitfall()
 
 func hit(amount):
 	print("taken_damage")
 	health -= amount
 	taken_damage.emit()
 	if health <= 0:
-		pitfall()
+		die()
+
+func die():
+	#load death screen
+	pass
 
 func pitfall():
 	position = respawn_point
@@ -71,3 +79,10 @@ func orient():
 
 func _on_res_point_timer_timeout():
 	respawn_point = position
+
+func _on_fall_detector_body_entered(body):
+	print("fall")
+	velocity = Vector2.ZERO
+	$AnimationPlayer.play("fall")
+	await get_tree().create_timer(1.5).timeout
+	pitfall()

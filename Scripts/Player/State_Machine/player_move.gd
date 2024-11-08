@@ -2,7 +2,6 @@ class_name Player_Move
 extends PlayerState
 
 func enter():
-	print("player walk")
 	anim_player.play("walk")
 
 

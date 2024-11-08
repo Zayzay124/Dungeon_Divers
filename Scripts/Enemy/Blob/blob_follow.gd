@@ -2,7 +2,6 @@ extends EnemyState
 class_name BlobFollow
 
 func enter():
-	print("follow")
 	anim_player.play("walk")
 
 func physics_update(_delta):

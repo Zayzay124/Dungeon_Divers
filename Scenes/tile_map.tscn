@@ -124,9 +124,9 @@ texture = ExtResource("1_svtja")
 3:6/0 = 0
 4:6/0 = 0
 5:6/0 = 0
-5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+5:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 6:6/0 = 0
-6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+6:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 7:6/0 = 0
 9:6/0 = 0
 10:6/0 = 0
@@ -147,9 +147,9 @@ texture = ExtResource("1_svtja")
 3:7/0 = 0
 4:7/0 = 0
 5:7/0 = 0
-5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+5:7/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 6:7/0 = 0
-6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+6:7/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 7:7/0 = 0
 9:7/0 = 0
 15:7/0 = 0
@@ -401,11 +401,12 @@ texture = ExtResource("1_svtja")
 
 [sub_resource type="TileSet" id="TileSet_hvpxf"]
 physics_layer_0/collision_layer = 32
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 64
+physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_eu4oq")
 
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_hvpxf")
 format = 2
 layer_0/name = "Terrain"
-layer_1/name = "Water"

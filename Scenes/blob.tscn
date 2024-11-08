@@ -115,6 +115,7 @@ vframes = 8
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_k32se")

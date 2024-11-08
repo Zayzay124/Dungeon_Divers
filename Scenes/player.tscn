@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjn35ya6houic"]
+[gd_scene load_steps=21 format=3 uid="uid://cjn35ya6houic"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_w3gui"]
 [ext_resource type="Texture2D" uid="uid://b46yo6tnoq6m0" path="res://Art/Player/axolotl_player/axolotlAnim-spriteSheet.png" id="2_585y5"]
@@ -7,12 +7,13 @@
 [ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_move.gd" id="5_yfn3s"]
 [ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_dash.gd" id="6_7ds42"]
 [ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_attack.gd" id="7_m3o2t"]
+[ext_resource type="Script" path="res://Scripts/Player/State_Machine/player_fall.gd" id="8_0e6hw"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_7lgql"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_l2ycd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_238ul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
-size = Vector2(16, 16)
+size = Vector2(24, 25)
 
 [sub_resource type="Animation" id="Animation_ddntg"]
 length = 0.001
@@ -77,13 +78,15 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtay"]
-size = Vector2(32, 32)
+size = Vector2(28, 29)
 
 [sub_resource type="Resource" id="Resource_5ippx"]
 script = ExtResource("10_238ul")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hqfg"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 32
@@ -92,8 +95,9 @@ speed = 100
 health = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2spal")
+debug_color = Color(0, 0.493876, 0.284103, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -129,11 +133,15 @@ script = ExtResource("7_m3o2t")
 attack_origin = NodePath("../../AttackOrigin")
 player = NodePath("../..")
 
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("8_0e6hw")
+player = NodePath("../..")
+
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 collision_mask = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_xvtay")
 
 [node name="AttackOrigin" type="Node2D" parent="." groups=["player"]]
@@ -161,5 +169,13 @@ dead_zone_height = 0.151
 [node name="ResPointTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="FallDetector" type="Area2D" parent="."]
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
+shape = SubResource("RectangleShape2D_8hqfg")
+debug_color = Color(0, 0, 0, 0.42)
+
 [connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="ResPointTimer" to="." method="_on_res_point_timer_timeout"]
+[connection signal="body_entered" from="FallDetector" to="." method="_on_fall_detector_body_entered"]

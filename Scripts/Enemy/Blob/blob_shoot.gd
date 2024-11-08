@@ -6,7 +6,6 @@ extends EnemyState
 @export var blob_attack_scene:PackedScene = preload("res://Scenes/blob_attack.tscn")
 
 func enter():
-	print("shoot")
 	anim_player.play("attack")
 	Attack_Timer.start()
 
