@@ -1,12 +1,15 @@
 class_name Player_Fall
 extends PlayerState
 
+var  falling:bool = false
+
 func enter():
-	anim_player.play("fall")
-	player.velocity = Vector2.ZERO
+	pass
+	#anim_player.play("fall")
 	#await get_tree().create_timer(0.5).timeout
-	transitioned.emit(self,"idle")
 
 
 func physics_update(_delta):
-	pass
+	player.velocity = Vector2.ZERO
+
+#lock player controls until animation is done playing

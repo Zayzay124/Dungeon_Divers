@@ -6,16 +6,19 @@ var dash_speed:int = 300
 var dashing:bool = false
 
 @export var dash_duration:float = 0.2
+@export var hurtbox:CollisionShape2D
 @onready var Dash_Timer = $DashTimer
 
 func enter():
 	dashing = true
+	hurtbox.disabled = true
 	Dash_Timer.start(dash_duration)
 	anim_player.play("dash")
 	dash()
 
 func exit():
 	dashing = false
+	hurtbox.disabled = false
 
 func physics_update(delta):
 	if !dashing:

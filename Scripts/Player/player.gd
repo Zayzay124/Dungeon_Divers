@@ -12,8 +12,6 @@ var current_weapon:Weapon_Pickup.WEAPON
 var input_dir:Vector2 = Vector2.ZERO
 var last_dir:Vector2 = Vector2.RIGHT
 
-var is_invincible:bool = false
-
 var respawn_point:Vector2 = Vector2.ZERO
 var has_fallen:bool = false
 
@@ -39,7 +37,7 @@ func _physics_process(delta):
 		last_dir = input_dir
 	
 	input_dir = input_dir.normalized()
-	move_and_collide(velocity * delta)
+	move_and_slide()
 
 func _input(event):
 	if event.is_action_pressed("interact"):
@@ -83,6 +81,9 @@ func _on_res_point_timer_timeout():
 func _on_fall_detector_body_entered(body):
 	print("fall")
 	velocity = Vector2.ZERO
-	$AnimationPlayer.play("fall")
-	await get_tree().create_timer(1.5).timeout
+	$FallDetector/CollisionShape2D.disabled = true
+	$ResPointTimer.stop()
+	await get_tree().create_timer(1).timeout
 	pitfall()
+	$FallDetector/CollisionShape2D.disabled = false
+	$ResPointTimer.start()

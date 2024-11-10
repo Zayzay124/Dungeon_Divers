@@ -17,13 +17,7 @@ func update(_delta):
 	pass
 
 func physics_update(_delta):
-	fall_check()
-	print("thing")
+	pass
 
 func player_movement():
 	player.velocity = player.input_dir * player.speed
-
-#put fall check here
-func fall_check():
-	if player.has_fallen:
-		transitioned.emit(self,"fall")

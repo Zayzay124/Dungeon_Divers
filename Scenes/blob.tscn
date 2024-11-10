@@ -91,13 +91,14 @@ _data = {
 size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d7uft"]
-radius = 256.5
+radius = 112.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0h6g"]
-radius = 384.333
+radius = 192.0
 
 [node name="Blob" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_qha58")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -124,8 +125,9 @@ shape = SubResource("RectangleShape2D_k32se")
 script = ExtResource("1_l6b6x")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("LOS", "enemy")]
 script = ExtResource("2_6ev02")
+LOS = NodePath("../../LOS")
 enemy = NodePath("../..")
 
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
@@ -145,18 +147,19 @@ wait_time = 1.5
 texture_filter = 1
 
 [node name="AttackRange" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_d7uft")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_c0h6g")
+
+[node name="LOS" type="RayCast2D" parent="."]
+collision_mask = 32
 
 [connection signal="timeout" from="StateMachine/Shoot/AttackTimer" to="StateMachine/Shoot" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="AttackRange" to="StateMachine/Follow" method="_on_attack_range_area_entered"]

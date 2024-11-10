@@ -80,13 +80,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtay"]
 size = Vector2(28, 29)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hqfg"]
+
 [sub_resource type="Resource" id="Resource_5ippx"]
 script = ExtResource("10_238ul")
 duration = 1.0
 transition = 0
 ease = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hqfg"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 32
@@ -121,8 +121,9 @@ player = NodePath("../..")
 script = ExtResource("5_yfn3s")
 player = NodePath("../..")
 
-[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox", "player")]
 script = ExtResource("6_7ds42")
+hurtbox = NodePath("../../HurtBox/CollisionShape2D")
 player = NodePath("../..")
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
@@ -137,12 +138,22 @@ player = NodePath("../..")
 script = ExtResource("8_0e6hw")
 player = NodePath("../..")
 
+[node name="FallTimer" type="Timer" parent="StateMachine/Fall"]
+one_shot = true
+
 [node name="HurtBox" type="Area2D" parent="."]
 collision_mask = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_xvtay")
+
+[node name="FallDetector" type="Area2D" parent="."]
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
+shape = SubResource("RectangleShape2D_8hqfg")
+debug_color = Color(0, 0, 0, 0.42)
 
 [node name="AttackOrigin" type="Node2D" parent="." groups=["player"]]
 
@@ -169,13 +180,6 @@ dead_zone_height = 0.151
 [node name="ResPointTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="FallDetector" type="Area2D" parent="."]
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
-shape = SubResource("RectangleShape2D_8hqfg")
-debug_color = Color(0, 0, 0, 0.42)
-
 [connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="ResPointTimer" to="." method="_on_res_point_timer_timeout"]
 [connection signal="body_entered" from="FallDetector" to="." method="_on_fall_detector_body_entered"]
+[connection signal="timeout" from="ResPointTimer" to="." method="_on_res_point_timer_timeout"]
