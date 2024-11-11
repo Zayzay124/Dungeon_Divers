@@ -122,9 +122,11 @@ player = NodePath("../..")
 script = ExtResource("5_yfn3s")
 player = NodePath("../..")
 
-[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox", "player")]
+[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox", "falldetector", "Res_Point_Timer", "player")]
 script = ExtResource("6_7ds42")
 hurtbox = NodePath("../../HurtBox/CollisionShape2D")
+falldetector = NodePath("../../FallDetector/CollisionShape2D")
+Res_Point_Timer = NodePath("../../ResPointTimer")
 player = NodePath("../..")
 
 [node name="DashTimer" type="Timer" parent="StateMachine/Dash"]

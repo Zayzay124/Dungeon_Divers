@@ -46,6 +46,7 @@ func _input(event):
 				var old_weapon = current_weapon
 				current_weapon = area.weapon_type
 				area.picked_up(old_weapon)
+				print(current_weapon)
 	if event.is_action_pressed("description"):
 		for area in $HurtBox.get_overlapping_areas():
 			area.change_desc_visibility()

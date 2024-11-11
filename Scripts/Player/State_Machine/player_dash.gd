@@ -7,18 +7,24 @@ var dashing:bool = false
 
 @export var dash_duration:float = 0.2
 @export var hurtbox:CollisionShape2D
-@onready var Dash_Timer = $DashTimer
+@export var falldetector:CollisionShape2D
+@export var Res_Point_Timer:Timer
 
+@onready var Dash_Timer = $DashTimer
 func enter():
 	dashing = true
 	hurtbox.disabled = true
+	falldetector.disabled = true
 	Dash_Timer.start(dash_duration)
+	Res_Point_Timer.stop()
 	anim_player.play("dash")
 	dash()
 
 func exit():
 	dashing = false
 	hurtbox.disabled = false
+	falldetector.disabled = false
+	Res_Point_Timer.start()
 
 func physics_update(delta):
 	if !dashing:
