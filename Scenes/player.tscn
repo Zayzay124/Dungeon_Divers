@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_238ul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2spal"]
-size = Vector2(24, 25)
+size = Vector2(30, 29)
 
 [sub_resource type="Animation" id="Animation_ddntg"]
 length = 0.001
@@ -95,7 +95,7 @@ speed = 100
 health = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_2spal")
 debug_color = Color(0, 0.493876, 0.284103, 0.42)
 
@@ -105,6 +105,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_585y5")
 hframes = 5
 vframes = 6

@@ -7,6 +7,7 @@ enum WEAPON {NONE,SWORD,BOW}
 
 func _ready():
 	$AnimatedSprite2D.frame = weapon_type
+	$AnimatedSprite2D.play("sword_idle") # might have to change later(?) -alyssa
 
 func _process(_delta):
 	pass
