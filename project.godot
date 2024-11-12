@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Game_Studio_Project"
-run/main_scene="res://Scenes/Levels/level.tscn"
+run/main_scene="res://Scenes/Levels/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

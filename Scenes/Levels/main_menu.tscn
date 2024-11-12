@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4u77otshk14q"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_2tb87"]
+[ext_resource type="Texture2D" uid="uid://d2ypcqacrb6ll" path="res://icon.svg" id="1_f4u6x"]
+[ext_resource type="FontFile" uid="uid://dp1ddppe36c3u" path="res://Art/test_stuff/GrapeSoda.ttf" id="2_u2es7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kg7a4"]
+texture = ExtResource("1_f4u6x")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4l25"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2tb87")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kg7a4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -47.0
+offset_right = 95.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
+text = "Play"
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
+text = "Tutorial"
+
+[node name="TutorialPopup" type="Popup" parent="VBoxContainer/TutorialButton"]
+initial_position = 1
+size = Vector2i(1000, 500)
+
+[node name="Tutorial-ExitButton" type="Button" parent="VBoxContainer/TutorialButton/TutorialPopup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 150.0
+offset_right = 5.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
+text = "Credits"
+
+[node name="CreditsPopup" type="Popup" parent="VBoxContainer/CreditsButton"]
+auto_translate_mode = 1
+initial_position = 1
+size = Vector2i(1000, 500)
+
+[node name="Credits-ExitButton" type="Button" parent="VBoxContainer/CreditsButton/CreditsPopup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 150.0
+offset_right = 5.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
+text = "Quit
+"
+
+[node name="GameTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -210.0
+offset_right = 464.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 15
+theme_override_fonts/font = ExtResource("2_u2es7")
+theme_override_font_sizes/font_size = 150
+text = "Dungeon Divers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_credits_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
