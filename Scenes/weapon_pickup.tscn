@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://btdbdtx3yqq0p"]
+[gd_scene load_steps=63 format=3 uid="uid://btdbdtx3yqq0p"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_pickup.gd" id="1_tgrtx"]
 [ext_resource type="Texture2D" uid="uid://bs8k4ov3lmghe" path="res://Art/Weapons/Axe attack-Sheet.png" id="2_0bj5w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bqbpnbi0pneck" path="res://Art/Weapons/spear attack-Sheet.png" id="4_4xemh"]
 [ext_resource type="Texture2D" uid="uid://dkfc6oayj5tit" path="res://Art/Weapons/Spear_Hover-Sheet.png" id="5_o31fv"]
 [ext_resource type="Texture2D" uid="uid://ctaaqml38nmip" path="res://Art/Weapons/sword_attack-Sheet.png" id="6_xy0hp"]
+[ext_resource type="FontFile" uid="uid://dp1ddppe36c3u" path="res://Art/test_stuff/GrapeSoda.ttf" id="8_5avup"]
 [ext_resource type="Texture2D" uid="uid://dcgih1icg2ga4" path="res://Art/HUD/eKey_HUD.png" id="9_ffttb"]
 [ext_resource type="Texture2D" uid="uid://bywk4aonfj1po" path="res://Art/HUD/vKey_HUD.png" id="10_t7r76"]
 
@@ -407,48 +408,61 @@ shape = SubResource("CircleShape2D_1xxc4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cscrr")
-animation = &"axe_attack"
+animation = &"sword_idle"
 
 [node name="Options" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -72.0
+offset_left = -74.0
 offset_top = -72.0
-offset_right = -32.0
+offset_right = -34.0
 offset_bottom = -32.0
 metadata/_edit_use_anchors_ = true
 
 [node name="PickupText" type="Label" parent="Options"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.2
-anchor_right = -0.2
+anchor_left = -0.45
+anchor_top = -0.125
+anchor_right = -0.15
+anchor_bottom = -0.05
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 60.0
 offset_bottom = 31.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_5avup")
+theme_override_font_sizes/font_size = 25
 text = "Pickup
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="E_Key" type="Sprite2D" parent="Options"]
+[node name="E_Key" type="Sprite2D" parent="Options/PickupText"]
 texture_filter = 1
-position = Vector2(32, 40)
+position = Vector2(32, 37)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("9_ffttb")
 
 [node name="DescText" type="Label" parent="Options"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 80.0
-offset_top = 8.0
-offset_right = 169.0
-offset_bottom = 31.0
+offset_left = 74.0
+offset_top = 3.0
+offset_right = 187.0
+offset_bottom = 29.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_5avup")
+theme_override_font_sizes/font_size = 25
 text = "Description"
 
-[node name="D_Key" type="Sprite2D" parent="Options"]
+[node name="D_Key" type="Sprite2D" parent="Options/DescText"]
 texture_filter = 1
-position = Vector2(128, 40)
+position = Vector2(54, 37)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("10_t7r76")
 

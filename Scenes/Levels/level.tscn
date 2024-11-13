@@ -580,3 +580,4 @@ weapon_type = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_8vrro")]
+script = null

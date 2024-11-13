@@ -26,6 +26,7 @@ grow_vertical = 2
 script = ExtResource("1_2tb87")
 
 [node name="Panel" type="Panel" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,6 +153,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_credits_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_credits_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
