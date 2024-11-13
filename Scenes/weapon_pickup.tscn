@@ -411,6 +411,7 @@ sprite_frames = SubResource("SpriteFrames_cscrr")
 animation = &"sword_idle"
 
 [node name="Options" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -74.0
