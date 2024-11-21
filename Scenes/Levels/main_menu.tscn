@@ -1,20 +1,77 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4u77otshk14q"]
+[gd_scene load_steps=22 format=3 uid="uid://b4u77otshk14q"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_2tb87"]
 [ext_resource type="Texture2D" uid="uid://d2ypcqacrb6ll" path="res://icon.svg" id="1_f4u6x"]
 [ext_resource type="FontFile" uid="uid://dp1ddppe36c3u" path="res://Art/test_stuff/GrapeSoda.ttf" id="2_u2es7"]
+[ext_resource type="Texture2D" uid="uid://b7y6rqm0wt3pb" path="res://Art/HUD/Play_Button_Green_CLICKED.png" id="3_j5n3h"]
+[ext_resource type="Texture2D" uid="uid://bqi6pwa2gmtqj" path="res://Art/HUD/Play_Button_Green.png" id="4_jj7qy"]
+[ext_resource type="Texture2D" uid="uid://c2vwhrkdc4xy0" path="res://Art/HUD/Tutorial_Button_Red_CLICKED.png" id="5_5r35y"]
+[ext_resource type="Texture2D" uid="uid://c3gstn6mbkxuv" path="res://Art/HUD/Tutorial_Button_Red.png" id="5_p27v4"]
+[ext_resource type="Texture2D" uid="uid://bay7k0l1k2iwf" path="res://Art/HUD/Options_Button_Purple_CLICKED.png" id="7_jenl0"]
+[ext_resource type="Texture2D" uid="uid://d4geuep0wtcop" path="res://Art/HUD/Quit_Button_Yellow_CLICKED.png" id="7_vuo3g"]
+[ext_resource type="Texture2D" uid="uid://ctjs2eu2ekfhu" path="res://Art/HUD/Quit_Button_Yellow.png" id="8_5ya5m"]
+[ext_resource type="Texture2D" uid="uid://8urn7mvbxph7" path="res://Art/HUD/Options_Button_Purple.png" id="8_7p544"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kg7a4"]
 texture = ExtResource("1_f4u6x")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4l25"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_size = 5
-shadow_offset = Vector2(0, 5)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nnvb7"]
+texture = ExtResource("3_j5n3h")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eik8i"]
+texture = ExtResource("4_jj7qy")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mq2n6"]
+texture = ExtResource("5_5r35y")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jpv5"]
+texture = ExtResource("5_p27v4")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="Theme" id="Theme_hm5q8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ww1cg"]
+texture = ExtResource("7_jenl0")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfskr"]
+texture = ExtResource("8_7p544")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mtp3y"]
+texture = ExtResource("7_vuo3g")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lm2h7"]
+texture = ExtResource("8_5ya5m")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -51,24 +108,27 @@ grow_vertical = 2
 theme_override_constants/separation = 15
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
-text = "Play"
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nnvb7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_eik8i")
 
 [node name="TutorialButton" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
-text = "Tutorial"
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mq2n6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0jpv5")
 
 [node name="TutorialPopup" type="Popup" parent="VBoxContainer/TutorialButton"]
 initial_position = 1
 size = Vector2i(1000, 500)
+theme = SubResource("Theme_hm5q8")
 
 [node name="Tutorial-ExitButton" type="Button" parent="VBoxContainer/TutorialButton/TutorialPopup"]
 anchors_preset = 8
@@ -87,20 +147,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
-text = "Credits"
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ww1cg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vfskr")
 
-[node name="CreditsPopup" type="Popup" parent="VBoxContainer/CreditsButton"]
+[node name="OptionsPopup" type="Popup" parent="VBoxContainer/OptionsButton"]
 auto_translate_mode = 1
 initial_position = 1
 size = Vector2i(1000, 500)
 
-[node name="Credits-ExitButton" type="Button" parent="VBoxContainer/CreditsButton/CreditsPopup"]
+[node name="Options-ExitButton" type="Button" parent="VBoxContainer/OptionsButton/OptionsPopup"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -118,13 +179,13 @@ size_flags_vertical = 4
 text = "Back"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_l4l25")
-text = "Quit
-"
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mtp3y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lm2h7")
 
 [node name="GameTitle" type="Label" parent="."]
 layout_mode = 1
@@ -152,7 +213,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_credits_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton/OptionsPopup/Options-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton/OptionsPopup/Options-ExitButton" to="." method="_on_options_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

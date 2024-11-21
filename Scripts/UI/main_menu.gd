@@ -2,7 +2,7 @@ extends Control
 
 # Reference to the Tutorial and Credits popups
 @onready var tutorial_popup = $VBoxContainer/TutorialButton/TutorialPopup
-@onready var credits_popup = $VBoxContainer/CreditsButton/CreditsPopup
+@onready var options_popup = $VBoxContainer/OptionsButton/OptionsPopup
 
 func _ready() -> void:
 	pass
@@ -19,11 +19,11 @@ func _on_tutorial_button_pressed() -> void:
 func _on_tutorial_exit_button_pressed() -> void:
 	tutorial_popup.hide()
 	
-func _on_credits_button_pressed() -> void:
-	credits_popup.popup_centered()  # Shows the tutorial popup in the center
-
-func _on_credits_exit_button_pressed() -> void:
-	credits_popup.hide()
-
+func _on_options_button_pressed() -> void:
+	options_popup.popup_centered() # Shows the options popup in the center
+	
+func _on_options_exit_button_pressed() -> void:
+	options_popup.hide()
+	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
