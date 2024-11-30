@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cjn35ya6houic" path="res://Scenes/player.tscn" id="1_i25k7"]
 [ext_resource type="PackedScene" uid="uid://vpcans4kderu" path="res://Scenes/tile_map.tscn" id="1_ylyld"]
 [ext_resource type="PackedScene" uid="uid://btdbdtx3yqq0p" path="res://Scenes/weapon_pickup.tscn" id="4_2iixh"]
-[ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/blob.tscn" id="4_immsh"]
+[ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/Enemy/blob.tscn" id="4_immsh"]
 
 [node name="Test_Level" type="Node2D"]
 

@@ -21,3 +21,6 @@ func physics_update(_delta):
 
 func player_movement():
 	player.velocity = player.input_dir * player.speed
+
+func fall_check():
+	return player.fallen

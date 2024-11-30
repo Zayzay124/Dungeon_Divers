@@ -4,12 +4,17 @@ extends PlayerState
 var  falling:bool = false
 
 func enter():
-	pass
+	print("fallen state")
+	$FallTimer.start()
+	player.pitfall()
 	#anim_player.play("fall")
-	#await get_tree().create_timer(0.5).timeout
 
 
 func physics_update(_delta):
 	player.velocity = Vector2.ZERO
 
-#lock player controls until animation is done playing
+func exit():
+	player.fallen = false
+
+func _on_fall_timer_timeout():
+	transitioned.emit(self,"idle")

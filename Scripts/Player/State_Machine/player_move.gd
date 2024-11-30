@@ -4,6 +4,8 @@ extends PlayerState
 func enter():
 	anim_player.play("walk")
 
+func update(_delta):
+	if fall_check(): transitioned.emit(self,"fall")
 
 func physics_update(delta):
 	player_movement()

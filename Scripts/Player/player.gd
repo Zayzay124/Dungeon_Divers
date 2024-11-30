@@ -13,7 +13,7 @@ var input_dir:Vector2 = Vector2.ZERO
 var last_dir:Vector2 = Vector2.RIGHT
 
 var respawn_point:Vector2 = Vector2.ZERO
-var has_fallen:bool = false
+var fallen:bool = false
 
 ##PreLoad Scenes
 @export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
@@ -80,11 +80,9 @@ func _on_res_point_timer_timeout():
 	respawn_point = position
 
 func _on_fall_detector_body_entered(body):
-	print("fall")
-	velocity = Vector2.ZERO
+	fallen = true
 	$FallDetector/CollisionShape2D.disabled = true
 	$ResPointTimer.stop()
 	await get_tree().create_timer(1).timeout
-	pitfall()
 	$FallDetector/CollisionShape2D.disabled = false
 	$ResPointTimer.start()

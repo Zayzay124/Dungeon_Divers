@@ -6,9 +6,10 @@ func enter():
 	anim_player.play("walk")
 
 func physics_update(_delta):
-	player_direction = player.global_position - enemy.global_position
+	pass
+	#player_direction = player.global_position - enemy.global_position
 	
-	enemy.velocity = player_direction.normalized() * enemy.speed
+	#enemy.velocity = player_direction.normalized() * enemy.speed
 
 func _on_attack_range_area_entered(_area):
 	transitioned.emit(self,"attack")

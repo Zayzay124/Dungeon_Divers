@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://16v0kf8bshk" path="res://Art/Tilemap/Top Down Garden Castle/Top down Garden Castle.png" id="1_kw8wc"]
 [ext_resource type="PackedScene" uid="uid://cjn35ya6houic" path="res://Scenes/player.tscn" id="2_0bcfx"]
-[ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/blob.tscn" id="3_2p8cg"]
+[ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/Enemy/blob.tscn" id="3_2p8cg"]
 [ext_resource type="PackedScene" uid="uid://btdbdtx3yqq0p" path="res://Scenes/weapon_pickup.tscn" id="4_o3xq1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ijfdx"]

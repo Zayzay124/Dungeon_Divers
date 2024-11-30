@@ -5,6 +5,10 @@ func enter():
 	anim_player.play("idle")
 	player.velocity = Vector2.ZERO
 
+func update(_delta):
+	if fall_check():
+		print("fallen from idle")
+		transitioned.emit(self,"fall")
 
 func physics_update(_delta):
 	if player.input_dir != Vector2.ZERO:

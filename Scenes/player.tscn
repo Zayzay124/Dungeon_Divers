@@ -163,6 +163,7 @@ debug_color = Color(0, 0, 0, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 zoom = Vector2(3, 3)
+process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -184,5 +185,6 @@ dead_zone_height = 0.151
 autostart = true
 
 [connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Fall/FallTimer" to="StateMachine/Fall" method="_on_fall_timer_timeout"]
 [connection signal="body_entered" from="FallDetector" to="." method="_on_fall_detector_body_entered"]
 [connection signal="timeout" from="ResPointTimer" to="." method="_on_res_point_timer_timeout"]
