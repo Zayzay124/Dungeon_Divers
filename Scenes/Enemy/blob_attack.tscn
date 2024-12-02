@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://coc501312bxtg"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_attack.gd" id="1_1hwnd"]
-[ext_resource type="Texture2D" uid="uid://dt5yvsarcbi6v" path="res://Art/Enemy/slime_enemy/slimeBall.png" id="2_dlidn"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_attack.gd" id="1_x7lfw"]
+[ext_resource type="Texture2D" uid="uid://dt5yvsarcbi6v" path="res://Art/Enemy/slime_enemy/slimeBall.png" id="2_2avu1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lskcv"]
 radius = 8.0
@@ -9,7 +9,7 @@ radius = 8.0
 [node name="Blob_Attack" type="Area2D"]
 collision_layer = 8
 collision_mask = 33
-script = ExtResource("1_1hwnd")
+script = ExtResource("1_x7lfw")
 speed = 200
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -21,7 +21,7 @@ shape = SubResource("CircleShape2D_lskcv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.492188, 0.476563)
-texture = ExtResource("2_dlidn")
+texture = ExtResource("2_2avu1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

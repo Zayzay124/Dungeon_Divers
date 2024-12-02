@@ -3,7 +3,7 @@ extends CharacterBody2D
 const speed:int = 65
 
 
-@export var blob_attack_scene:PackedScene = preload("res://Scenes/blob_attack.tscn")
+@export var blob_attack_scene:PackedScene = preload("res://Scenes/Enemy/blob_attack.tscn")
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
 @onready var LOS:RayCast2D = $LOS
 

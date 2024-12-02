@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://c7tx570km2cp0"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo.gd" id="1_evbyk"]
-[ext_resource type="Texture2D" uid="uid://cl5078e2blh80" path="res://Art/Enemy/barbarian_enemy/barbarianAnim-spriteSheet.png" id="2_w667t"]
-[ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="3_rn2o8"]
-[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_idle.gd" id="4_4ap4x"]
-[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_follow.gd" id="5_8qsa7"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo.gd" id="1_lq0m3"]
+[ext_resource type="Texture2D" uid="uid://cl5078e2blh80" path="res://Art/Enemy/barbarian_enemy/barbarianAnim-spriteSheet.png" id="2_825d5"]
+[ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="3_rl53b"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_idle.gd" id="4_uqodn"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_follow.gd" id="5_a8tib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykvx5"]
 
@@ -75,7 +75,7 @@ radius = 16.0
 radius = 72.0
 
 [node name="Squeebo" type="CharacterBody2D"]
-script = ExtResource("1_evbyk")
+script = ExtResource("1_lq0m3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -87,7 +87,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_w667t")
+texture = ExtResource("2_825d5")
 hframes = 6
 vframes = 5
 
@@ -98,15 +98,15 @@ visible = false
 shape = SubResource("RectangleShape2D_gar2b")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_rn2o8")
+script = ExtResource("3_rl53b")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("4_4ap4x")
+script = ExtResource("4_uqodn")
 enemy = NodePath("../..")
 
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_8qsa7")
+script = ExtResource("5_a8tib")
 enemy = NodePath("../..")
 
 [node name="Attack" type="Node" parent="StateMachine"]
