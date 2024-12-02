@@ -17,8 +17,9 @@ var fallen:bool = false
 
 ##PreLoad Scenes
 @export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
-@export var melee_attack_scene:PackedScene = preload("res://Scenes/sword.tscn")
-
+#@export var melee_attack_scene:PackedScene = preload("res://Scenes/sword.tscn")
+#@export var melee_attack_scene:PackedScene = preload("res://Scenes/axe.tscn")
+@export var melee_attack_scene:PackedScene = preload("res://Scenes/spear.tscn")
 ##Nodes vars to instantiate attack scenes in
 var melee:Node
 

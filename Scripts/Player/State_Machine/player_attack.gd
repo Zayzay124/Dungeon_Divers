@@ -19,6 +19,10 @@ func weapon_attack():
 			print("nothing")
 		Weapon_Pickup.WEAPON.SWORD:
 			melee_attack()
+		Weapon_Pickup.WEAPON.AXE:
+			pass
+		Weapon_Pickup.WEAPON.SPEAR:
+			pass
 		Weapon_Pickup.WEAPON.BOW:
 			ranged_attack()
 
