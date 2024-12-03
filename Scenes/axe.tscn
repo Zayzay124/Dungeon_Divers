@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcl6kkoht2ybt"]
+[gd_scene load_steps=13 format=3 uid="uid://bcl6kkoht2ybt"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/sword.gd" id="1_0r6bt"]
+[ext_resource type="Script" path="res://Scripts/Weapons/attack.gd" id="1_n6hsv"]
 [ext_resource type="Texture2D" uid="uid://bs8k4ov3lmghe" path="res://Art/Weapons/Axe attack-Sheet.png" id="2_d8bc0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klhkm"]
@@ -39,14 +39,10 @@ region = Rect2(0, 144, 85, 72)
 atlas = ExtResource("2_d8bc0")
 region = Rect2(85, 144, 85, 72)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsg8r"]
-atlas = ExtResource("2_d8bc0")
-region = Rect2(170, 144, 85, 72)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldpf7"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_d646o")
 }, {
 "duration": 1.0,
@@ -69,9 +65,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fcnq5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsg8r")
 }],
 "loop": false,
 "name": &"attack",
@@ -82,21 +75,23 @@ animations = [{
 position = Vector2(16, 0)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_0r6bt")
+script = ExtResource("1_n6hsv")
 damage = 3
-startup_time = 0.25
+startup_time = 0.33
 activation_time = 0.25
 recovery_time = 0.25
 
 [node name="Detector" type="CollisionShape2D" parent="."]
-position = Vector2(16, 0)
+position = Vector2(8, 0)
 shape = SubResource("CapsuleShape2D_klhkm")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_ldpf7")
 animation = &"attack"
-frame = 8
+frame = 7
 frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

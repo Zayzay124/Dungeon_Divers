@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2jcihamfm3op"]
+[gd_scene load_steps=11 format=3 uid="uid://b2jcihamfm3op"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/sword.gd" id="1_0wtjc"]
+[ext_resource type="Script" path="res://Scripts/Weapons/attack.gd" id="1_yc4fs"]
 [ext_resource type="Texture2D" uid="uid://bqbpnbi0pneck" path="res://Art/Weapons/spear attack-Sheet.png" id="2_x6ynh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klhkm"]
@@ -31,18 +31,6 @@ region = Rect2(65, 72, 65, 72)
 atlas = ExtResource("2_x6ynh")
 region = Rect2(130, 72, 65, 72)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ei3s"]
-atlas = ExtResource("2_x6ynh")
-region = Rect2(0, 144, 65, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wcnme"]
-atlas = ExtResource("2_x6ynh")
-region = Rect2(65, 144, 65, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7p2x"]
-atlas = ExtResource("2_x6ynh")
-region = Rect2(130, 144, 65, 72)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_f8pvj"]
 animations = [{
 "frames": [{
@@ -63,15 +51,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qob8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ei3s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wcnme")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7p2x")
 }],
 "loop": false,
 "name": &"attack",
@@ -81,8 +60,8 @@ animations = [{
 [node name="Spear" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_0wtjc")
-startup_time = 0.25
+script = ExtResource("1_yc4fs")
+startup_time = 0.083
 activation_time = 0.25
 recovery_time = 0.25
 
@@ -92,9 +71,11 @@ shape = SubResource("CapsuleShape2D_klhkm")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_f8pvj")
 animation = &"attack"
-frame = 8
-frame_progress = 1.0
+frame = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

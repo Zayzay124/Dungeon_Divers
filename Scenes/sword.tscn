@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c65e7b4joy6fc"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/sword.gd" id="1_jen3i"]
+[ext_resource type="Script" path="res://Scripts/Weapons/attack.gd" id="1_mor5g"]
 [ext_resource type="Texture2D" uid="uid://ctaaqml38nmip" path="res://Art/Weapons/sword_attack-Sheet.png" id="2_b2rs8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klhkm"]
@@ -82,7 +82,7 @@ animations = [{
 position = Vector2(16, 0)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_jen3i")
+script = ExtResource("1_mor5g")
 damage = 2
 startup_time = 0.25
 activation_time = 0.25
@@ -94,8 +94,11 @@ shape = SubResource("CapsuleShape2D_klhkm")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_kkeuq")
 animation = &"attack"
-frame = 3
+frame = 8
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

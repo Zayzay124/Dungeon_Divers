@@ -525,3 +525,7 @@ weapon_type = 2
 [node name="Weapon_Pickup2" parent="." instance=ExtResource("4_o3xq1")]
 position = Vector2(-40, -248)
 weapon_type = 3
+
+[node name="Weapon_Pickup3" parent="." instance=ExtResource("4_o3xq1")]
+position = Vector2(-56, -96)
+weapon_type = 1

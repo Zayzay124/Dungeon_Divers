@@ -17,16 +17,22 @@ var fallen:bool = false
 
 ##PreLoad Scenes
 @export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
-#@export var melee_attack_scene:PackedScene = preload("res://Scenes/sword.tscn")
-#@export var melee_attack_scene:PackedScene = preload("res://Scenes/axe.tscn")
-@export var melee_attack_scene:PackedScene = preload("res://Scenes/spear.tscn")
+@export var sword_scene:PackedScene = preload("res://Scenes/sword.tscn")
+@export var spear_scene:PackedScene = preload("res://Scenes/spear.tscn")
+@export var axe_scene:PackedScene = preload("res://Scenes/axe.tscn")
+
 ##Nodes vars to instantiate attack scenes in
-var melee:Node
+var sword:Node
+var spear:Node
+var axe:Node
 
 func _ready():
-	print(current_weapon)
-	melee = melee_attack_scene.instantiate()
-	add_child(melee)
+	sword = sword_scene.instantiate()
+	add_child(sword)
+	spear = spear_scene.instantiate()
+	add_child(spear)
+	axe = axe_scene.instantiate()
+	add_child(axe)
 
 func _process(_delta):
 	orient()

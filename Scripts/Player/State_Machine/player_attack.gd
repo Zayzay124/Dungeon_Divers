@@ -18,16 +18,16 @@ func weapon_attack():
 		Weapon_Pickup.WEAPON.NONE:
 			print("nothing")
 		Weapon_Pickup.WEAPON.SWORD:
-			melee_attack()
+			sword_attack()
 		Weapon_Pickup.WEAPON.AXE:
-			pass
+			player.axe.activate(attack_origin)
 		Weapon_Pickup.WEAPON.SPEAR:
-			pass
+			player.spear.activate(attack_origin)
 		Weapon_Pickup.WEAPON.BOW:
 			ranged_attack()
 
-func melee_attack():
-	player.melee.activate(attack_origin)
+func sword_attack():
+	player.sword.activate(attack_origin)
 
 func ranged_attack():
 	var projectile = player.range_attack_scene.instantiate()
