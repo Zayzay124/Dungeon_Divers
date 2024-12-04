@@ -604,4 +604,4 @@ position = Vector2(-424.77, -98.8906)
 position = Vector2(356.597, -94.3937)
 
 [node name="Squeebo" parent="Squeebo/Squeebo/Squeebo/Squeebo" instance=ExtResource("6_hkh0m")]
-position = Vector2(-722.932, 400.797)
+position = Vector2(-723.361, 401.21)
