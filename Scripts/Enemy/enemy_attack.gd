@@ -3,6 +3,7 @@ extends Area2D
 
 @export var damage:int = 1
 
+@export var startup_time:float = 0
 @export var activation_time:float = 0
 @export var recovery_time:float = 0
 
@@ -21,6 +22,8 @@ func activate(origin):
 	position = origin.position
 	rotation = origin.rotation
 	visible = true
+	$AnimatedSprite2D.play("attack")
+	await get_tree().create_timer(startup_time).timeout
 	$Detector.disabled = false
 	await get_tree().create_timer(activation_time).timeout
 	recover()
@@ -33,6 +36,7 @@ func recover():
 
 func stop():
 	visible = false
+
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):

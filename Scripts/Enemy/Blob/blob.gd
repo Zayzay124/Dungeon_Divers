@@ -14,7 +14,7 @@ var LOS_of_player:bool = false
 var player_in_range:bool = false
 var can_attack:bool = false
 
-func _process(delta):
+func _process(_delta):
 	LOS.target_position = player_direction
 	player_direction = player.global_position - global_position
 	LOS_of_player = !LOS.is_colliding()

@@ -26,7 +26,7 @@ func exit():
 	falldetector.disabled = false
 	Res_Point_Timer.start()
 
-func physics_update(delta):
+func physics_update(_delta):
 	if !dashing:
 		transitioned.emit(self,"idle")
 

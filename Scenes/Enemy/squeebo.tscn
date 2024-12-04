@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7tx570km2cp0"]
+[gd_scene load_steps=15 format=3 uid="uid://c7tx570km2cp0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo.gd" id="1_lq0m3"]
 [ext_resource type="Texture2D" uid="uid://cl5078e2blh80" path="res://Art/Enemy/barbarian_enemy/barbarianAnim-spriteSheet.png" id="2_825d5"]
 [ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="3_rl53b"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_idle.gd" id="4_uqodn"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_follow.gd" id="5_a8tib"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_attack.gd" id="6_umd7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykvx5"]
 
@@ -69,16 +70,18 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gar2b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6m08"]
-radius = 16.0
+radius = 40.7922
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s1j18"]
-radius = 72.0
+radius = 160.2
 
-[node name="Squeebo" type="CharacterBody2D"]
+[node name="Squeebo" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_lq0m3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_ykvx5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -92,7 +95,8 @@ hframes = 6
 vframes = 5
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_gar2b")
@@ -101,30 +105,43 @@ shape = SubResource("RectangleShape2D_gar2b")
 script = ExtResource("3_rl53b")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("LOS", "enemy")]
 script = ExtResource("4_uqodn")
+LOS = NodePath("../../LOS")
 enemy = NodePath("../..")
 
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_a8tib")
 enemy = NodePath("../..")
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("Attack_Timer", "attack_origin", "enemy")]
+script = ExtResource("6_umd7t")
+Attack_Timer = NodePath("AttackTimer")
+attack_origin = NodePath("../../AttackOrigin")
+enemy = NodePath("../..")
 
-[node name="AttackSpawn" type="Node2D" parent="."]
+[node name="AttackTimer" type="Timer" parent="StateMachine/Attack"]
+wait_time = 1.5
+
+[node name="AttackOrigin" type="Node2D" parent="."]
 
 [node name="AttackRange" type="Area2D" parent="."]
-visible = false
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_c6m08")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
-visible = false
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_s1j18")
 
+[node name="LOS" type="RayCast2D" parent="."]
+collision_mask = 32
+
+[connection signal="timeout" from="StateMachine/Attack/AttackTimer" to="StateMachine/Attack" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="AttackRange" to="StateMachine/Follow" method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="StateMachine/Attack" method="_on_attack_range_area_exited"]
 [connection signal="area_entered" from="PlayerDetector" to="StateMachine/Idle" method="_on_player_detected"]
 [connection signal="area_exited" from="PlayerDetector" to="StateMachine/Follow" method="_on_player_detector_area_exited"]

@@ -1,5 +1,5 @@
-extends EnemyState
 class_name BlobIdle
+extends EnemyState
 
 @export var LOS:RayCast2D
 

@@ -10,7 +10,7 @@ func enter():
 	await get_tree().create_timer(.5).timeout
 	transitioned.emit(self,"move")
 
-func physics_update(delta):
+func physics_update(_delta):
 	player_movement()
 
 func weapon_attack():
@@ -18,16 +18,13 @@ func weapon_attack():
 		Weapon_Pickup.WEAPON.NONE:
 			print("nothing")
 		Weapon_Pickup.WEAPON.SWORD:
-			sword_attack()
+			player.sword.activate(attack_origin)
 		Weapon_Pickup.WEAPON.AXE:
 			player.axe.activate(attack_origin)
 		Weapon_Pickup.WEAPON.SPEAR:
 			player.spear.activate(attack_origin)
 		Weapon_Pickup.WEAPON.BOW:
 			ranged_attack()
-
-func sword_attack():
-	player.sword.activate(attack_origin)
 
 func ranged_attack():
 	var projectile = player.range_attack_scene.instantiate()

@@ -1,19 +1,19 @@
-extends EnemyState
 class_name SqueeboFollow
+extends EnemyState
 
 func enter():
-	print("squeebo_follow")
+	print("sq_follow")
 	anim_player.play("walk")
 
 func physics_update(_delta):
-	pass
-	#player_direction = player.global_position - enemy.global_position
-	
-	#enemy.velocity = player_direction.normalized() * enemy.speed
+	enemy.velocity = enemy.player_direction.normalized() * enemy.speed
+	if !player_detection():
+		transitioned.emit(self,"idle")
+	elif player_detection() and enemy.can_attack:
+		transitioned.emit(self,"attack")
 
 func _on_attack_range_area_entered(_area):
-	transitioned.emit(self,"attack")
-
+	enemy.can_attack = true
 
 func _on_player_detector_area_exited(_area):
-	transitioned.emit(self,"idle")
+	enemy.player_in_range = false

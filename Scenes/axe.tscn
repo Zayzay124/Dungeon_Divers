@@ -72,6 +72,7 @@ animations = [{
 }]
 
 [node name="Axe" type="Area2D"]
+texture_filter = 1
 position = Vector2(16, 0)
 collision_layer = 4
 collision_mask = 2
@@ -87,7 +88,6 @@ shape = SubResource("CapsuleShape2D_klhkm")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_ldpf7")
 animation = &"attack"

@@ -15,7 +15,7 @@ var last_dir:Vector2 = Vector2.RIGHT
 var respawn_point:Vector2 = Vector2.ZERO
 var fallen:bool = false
 
-##PreLoad Scenes
+##Preload Weapon Scenes
 @export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
 @export var sword_scene:PackedScene = preload("res://Scenes/sword.tscn")
 @export var spear_scene:PackedScene = preload("res://Scenes/spear.tscn")
@@ -37,7 +37,7 @@ func _ready():
 func _process(_delta):
 	orient()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	input_dir = Input.get_vector("left","right","up","down");
 	
 	if input_dir != Vector2.ZERO:
@@ -86,7 +86,7 @@ func orient():
 func _on_res_point_timer_timeout():
 	respawn_point = position
 
-func _on_fall_detector_body_entered(body):
+func _on_fall_detector_body_entered(_body):
 	fallen = true
 	$FallDetector/CollisionShape2D.disabled = true
 	$ResPointTimer.stop()

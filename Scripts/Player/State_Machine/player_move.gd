@@ -7,7 +7,7 @@ func enter():
 func update(_delta):
 	if fall_check(): transitioned.emit(self,"fall")
 
-func physics_update(delta):
+func physics_update(_delta):
 	player_movement()
 
 	if player.input_dir == Vector2.ZERO:
