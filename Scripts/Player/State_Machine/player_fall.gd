@@ -7,7 +7,7 @@ func enter():
 	print("fallen state")
 	$FallTimer.start()
 	player.pitfall()
-	#anim_player.play("fall")
+	anim_player.play("fall")
 
 
 func physics_update(_delta):
