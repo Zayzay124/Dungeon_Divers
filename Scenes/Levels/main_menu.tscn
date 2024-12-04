@@ -1,22 +1,31 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4u77otshk14q"]
+[gd_scene load_steps=30 format=3 uid="uid://b4u77otshk14q"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_2tb87"]
-[ext_resource type="Texture2D" uid="uid://d2ypcqacrb6ll" path="res://icon.svg" id="1_f4u6x"]
+[ext_resource type="Texture2D" uid="uid://ceu37kabvvn2s" path="res://Art/HUD/gameTitleBG.webp" id="2_r310m"]
 [ext_resource type="FontFile" uid="uid://dp1ddppe36c3u" path="res://Art/test_stuff/GrapeSoda.ttf" id="2_u2es7"]
 [ext_resource type="Texture2D" uid="uid://b7y6rqm0wt3pb" path="res://Art/HUD/Play_Button_Green_CLICKED.png" id="3_j5n3h"]
 [ext_resource type="Texture2D" uid="uid://bqi6pwa2gmtqj" path="res://Art/HUD/Play_Button_Green.png" id="4_jj7qy"]
 [ext_resource type="Texture2D" uid="uid://c2vwhrkdc4xy0" path="res://Art/HUD/Tutorial_Button_Red_CLICKED.png" id="5_5r35y"]
 [ext_resource type="Texture2D" uid="uid://c3gstn6mbkxuv" path="res://Art/HUD/Tutorial_Button_Red.png" id="5_p27v4"]
-[ext_resource type="Texture2D" uid="uid://bay7k0l1k2iwf" path="res://Art/HUD/Options_Button_Purple_CLICKED.png" id="7_jenl0"]
+[ext_resource type="Texture2D" uid="uid://ctsgcqtfxsskf" path="res://Art/HUD/page.png" id="7_m5smm"]
 [ext_resource type="Texture2D" uid="uid://d4geuep0wtcop" path="res://Art/HUD/Quit_Button_Yellow_CLICKED.png" id="7_vuo3g"]
 [ext_resource type="Texture2D" uid="uid://ctjs2eu2ekfhu" path="res://Art/HUD/Quit_Button_Yellow.png" id="8_5ya5m"]
-[ext_resource type="Texture2D" uid="uid://8urn7mvbxph7" path="res://Art/HUD/Options_Button_Purple.png" id="8_7p544"]
+[ext_resource type="Texture2D" uid="uid://blj1om65mxcfc" path="res://Art/HUD/ExitButton.png" id="9_riraf"]
+[ext_resource type="Texture2D" uid="uid://65tj4k2atiut" path="res://Art/HUD/Credits_Button_Blue_CLICKED.png" id="10_6sexv"]
+[ext_resource type="Texture2D" uid="uid://b3rxe8063cd5l" path="res://Art/HUD/Credits_Button_Blue.png" id="11_kwmxh"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kg7a4"]
-texture = ExtResource("1_f4u6x")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crph4"]
+texture = ExtResource("2_r310m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_egq7s"]
+texture = ExtResource("3_j5n3h")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nnvb7"]
-texture = ExtResource("3_j5n3h")
+texture = ExtResource("4_jj7qy")
 texture_margin_left = 10.0
 texture_margin_top = 8.0
 texture_margin_right = 10.0
@@ -29,8 +38,15 @@ texture_margin_top = 8.0
 texture_margin_right = 10.0
 texture_margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mq2n6"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfc3s"]
 texture = ExtResource("5_5r35y")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mq2n6"]
+texture = ExtResource("5_p27v4")
 texture_margin_left = 10.0
 texture_margin_top = 8.0
 texture_margin_right = 10.0
@@ -43,24 +59,45 @@ texture_margin_top = 8.0
 texture_margin_right = 10.0
 texture_margin_bottom = 8.0
 
-[sub_resource type="Theme" id="Theme_hm5q8"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bvnai"]
+texture = ExtResource("9_riraf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r18k2"]
+texture = ExtResource("9_riraf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0342c"]
+texture = ExtResource("9_riraf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_35sh6"]
+texture = ExtResource("10_6sexv")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ww1cg"]
-texture = ExtResource("7_jenl0")
+texture = ExtResource("11_kwmxh")
 texture_margin_left = 10.0
 texture_margin_top = 8.0
 texture_margin_right = 10.0
 texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfskr"]
-texture = ExtResource("8_7p544")
+texture = ExtResource("11_kwmxh")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aq4yk"]
+texture = ExtResource("7_vuo3g")
 texture_margin_left = 10.0
 texture_margin_top = 8.0
 texture_margin_right = 10.0
 texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mtp3y"]
-texture = ExtResource("7_vuo3g")
+texture = ExtResource("8_5ya5m")
 texture_margin_left = 10.0
 texture_margin_top = 8.0
 texture_margin_right = 10.0
@@ -90,7 +127,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_kg7a4")
+theme_override_styles/panel = SubResource("StyleBoxTexture_crph4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -113,6 +150,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxTexture_egq7s")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nnvb7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_eik8i")
 
@@ -122,61 +160,167 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxTexture_pfc3s")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mq2n6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0jpv5")
 
-[node name="TutorialPopup" type="Popup" parent="VBoxContainer/TutorialButton"]
-initial_position = 1
-size = Vector2i(1000, 500)
-theme = SubResource("Theme_hm5q8")
-
-[node name="Tutorial-ExitButton" type="Button" parent="VBoxContainer/TutorialButton/TutorialPopup"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = 150.0
-offset_right = 5.0
-offset_bottom = 181.0
+[node name="TutorialPopup" type="TextureRect" parent="VBoxContainer/TutorialButton"]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -415.0
+offset_top = -300.0
+offset_right = -244.0
+offset_bottom = -183.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Back"
+scale = Vector2(3, 3)
+texture = ExtResource("7_m5smm")
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+[node name="PopupTitle" type="Label" parent="VBoxContainer/TutorialButton/TutorialPopup"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 20.0
+offset_right = 59.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_u2es7")
+theme_override_font_sizes/font_size = 35
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="PopupText" type="Label" parent="VBoxContainer/TutorialButton/TutorialPopup"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.5
+offset_top = 52.0
+offset_right = 116.5
+offset_bottom = 151.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.666667, 0.352941, 0.117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_u2es7")
+theme_override_font_sizes/font_size = 30
+text = "Movement - WASD
+Attack - Space Bar
+Dash - Shift Key"
+horizontal_alignment = 1
+
+[node name="Tutorial-ExitButton" type="Button" parent="VBoxContainer/TutorialButton/TutorialPopup"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 315.0
+offset_right = 345.0
+offset_bottom = 30.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_bvnai")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r18k2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0342c")
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxTexture_35sh6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ww1cg")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vfskr")
 
-[node name="OptionsPopup" type="Popup" parent="VBoxContainer/OptionsButton"]
-auto_translate_mode = 1
-initial_position = 1
-size = Vector2i(1000, 500)
-
-[node name="Options-ExitButton" type="Button" parent="VBoxContainer/OptionsButton/OptionsPopup"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = 150.0
-offset_right = 5.0
-offset_bottom = 181.0
+[node name="CreditsPopup" type="TextureRect" parent="VBoxContainer/CreditsButton"]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -415.0
+offset_top = -378.0
+offset_right = -244.0
+offset_bottom = -261.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Back"
+scale = Vector2(3, 3)
+texture = ExtResource("7_m5smm")
+
+[node name="PopupTitle" type="Label" parent="VBoxContainer/CreditsButton/CreditsPopup"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 20.0
+offset_right = 59.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_u2es7")
+theme_override_font_sizes/font_size = 35
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="PopupText" type="Label" parent="VBoxContainer/CreditsButton/CreditsPopup"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.5
+offset_top = 52.0
+offset_right = 116.5
+offset_bottom = 151.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.666667, 0.352941, 0.117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_u2es7")
+theme_override_font_sizes/font_size = 18
+text = "Abby Agostin - Art & Programming
+Alyssa Mazur - Art & Programming
+Brenden Moloney - Level Design
+Zay Rettig - Programming
+Kendall Pastreich - Writing"
+horizontal_alignment = 1
+
+[node name="Credits-ExitButton" type="Button" parent="VBoxContainer/CreditsButton/CreditsPopup"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 315.0
+offset_right = 345.0
+offset_bottom = 30.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_bvnai")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r18k2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0342c")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 texture_filter = 1
@@ -184,6 +328,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxTexture_aq4yk")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mtp3y")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lm2h7")
 
@@ -200,9 +345,12 @@ offset_right = 464.0
 offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.392157, 0.72549, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_u2es7")
 theme_override_font_sizes/font_size = 150
 text = "Dungeon Divers"
@@ -212,8 +360,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/TutorialButton/TutorialPopup/Tutorial-ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton/OptionsPopup/Options-ExitButton" to="." method="_on_tutorial_exit_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton/OptionsPopup/Options-ExitButton" to="." method="_on_options_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPopup/Credits-ExitButton" to="." method="_on_credits_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
