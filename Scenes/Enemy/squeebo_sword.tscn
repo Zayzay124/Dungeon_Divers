@@ -46,7 +46,7 @@ region = Rect2(250, 184, 125, 92)
 [sub_resource type="SpriteFrames" id="SpriteFrames_kkeuq"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_pdoc6")
 }, {
 "duration": 1.0,
@@ -81,11 +81,10 @@ animations = [{
 [node name="Squeebo_Sword" type="Area2D"]
 texture_filter = 1
 position = Vector2(16, 0)
-collision_layer = 4
-collision_mask = 2
+collision_layer = 8
 script = ExtResource("1_vvrd4")
-damage = 2
-startup_time = 0.25
+damage = 4
+startup_time = 0.5
 activation_time = 0.25
 recovery_time = 0.25
 

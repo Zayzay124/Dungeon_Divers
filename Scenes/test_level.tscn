@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj6g5k3t4tvb6"]
+[gd_scene load_steps=6 format=3 uid="uid://cj6g5k3t4tvb6"]
 
 [ext_resource type="PackedScene" uid="uid://cjn35ya6houic" path="res://Scenes/player.tscn" id="1_i25k7"]
 [ext_resource type="PackedScene" uid="uid://vpcans4kderu" path="res://Scenes/tile_map.tscn" id="1_ylyld"]
 [ext_resource type="PackedScene" uid="uid://btdbdtx3yqq0p" path="res://Scenes/weapon_pickup.tscn" id="4_2iixh"]
 [ext_resource type="PackedScene" uid="uid://c7tx570km2cp0" path="res://Scenes/Enemy/squeebo.tscn" id="5_a1jvd"]
+[ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/Enemy/blob.tscn" id="5_h2n3n"]
 
 [node name="Test_Level" type="Node2D"]
 
@@ -18,3 +19,6 @@ weapon_type = 2
 
 [node name="Squeebo" parent="." instance=ExtResource("5_a1jvd")]
 position = Vector2(336, 264)
+
+[node name="Blob" parent="." instance=ExtResource("5_h2n3n")]
+position = Vector2(72, 360)

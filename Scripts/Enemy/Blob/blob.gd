@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const speed:int = 65
-
+@export var speed:int = 65
+@export var health:int = 0
 
 @export var blob_attack_scene:PackedScene = preload("res://Scenes/Enemy/blob_attack.tscn")
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
@@ -26,5 +26,10 @@ func _physics_process(_delta):
 		$Sprite2D.flip_h = true
 	move_and_slide()
 
-func hit(_amount):
+func hit(amount):
+	health -= amount
+	if health <= 0:
+		die()
+
+func die():
 	queue_free()

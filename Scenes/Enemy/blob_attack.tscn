@@ -11,6 +11,7 @@ collision_layer = 8
 collision_mask = 33
 script = ExtResource("1_x7lfw")
 speed = 200
+damage = 2
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 4.17233e-07)

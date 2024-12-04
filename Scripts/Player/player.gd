@@ -5,7 +5,6 @@ signal taken_damage # talks to HUD
 
 @export var speed:int = 300
 @export var health:int = 0
-@export var magic_points:int = 50
 
 var current_weapon:Weapon_Pickup.WEAPON
 
@@ -61,15 +60,14 @@ func _input(event):
 		pitfall()
 
 func hit(amount):
-	print("taken_damage")
+	print(health)
 	health -= amount
 	taken_damage.emit()
 	if health <= 0:
 		die()
 
 func die():
-	#load death screen
-	pass
+	get_tree().change_scene_to_file("res://Scenes/Levels/main_menu.tscn")
 
 func pitfall():
 	position = respawn_point
