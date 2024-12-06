@@ -126,6 +126,7 @@ _data = {
 size = Vector2(28, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hqfg"]
+size = Vector2(2, 1)
 
 [sub_resource type="Resource" id="Resource_5ippx"]
 script = ExtResource("10_238ul")
@@ -140,6 +141,7 @@ speed = 100
 health = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_2spal")
 debug_color = Color(0, 0.493876, 0.284103, 0.42)
@@ -192,6 +194,7 @@ player = NodePath("../..")
 one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_mask = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -202,6 +205,7 @@ shape = SubResource("RectangleShape2D_xvtay")
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
+position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_8hqfg")
 debug_color = Color(0, 0, 0, 0.42)
 
