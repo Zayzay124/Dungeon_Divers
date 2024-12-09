@@ -141,7 +141,6 @@ speed = 100
 health = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_2spal")
 debug_color = Color(0, 0.493876, 0.284103, 0.42)
@@ -186,22 +185,25 @@ script = ExtResource("7_m3o2t")
 attack_origin = NodePath("../../AttackOrigin")
 player = NodePath("../..")
 
-[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox", "falldetector", "player")]
 script = ExtResource("8_0e6hw")
+hurtbox = NodePath("../../HurtBox/CollisionShape2D")
+falldetector = NodePath("../../FallDetector/CollisionShape2D")
 player = NodePath("../..")
 
 [node name="FallTimer" type="Timer" parent="StateMachine/Fall"]
 one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 collision_mask = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_xvtay")
+debug_color = Color(0.819552, 0.00180933, 0.967366, 0.42)
 
 [node name="FallDetector" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]

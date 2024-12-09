@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://kd6h1t1dkndc"]
+
+[ext_resource type="Texture2D" uid="uid://bc4tnxhxqr2ho" path="res://Art/Weapons/Wand_Attack-Sheet.png" id="1_sovd5"]
+[ext_resource type="Script" path="res://Scripts/Weapons/attack.gd" id="1_xikxt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7y5j8"]
+radius = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2wxp"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(0, 0, 65, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_551xp"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(65, 0, 65, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doywe"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(130, 0, 65, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnloq"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(0, 72, 65, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om0ks"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(65, 72, 65, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs3lt"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(130, 72, 65, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgle7"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(0, 144, 65, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aquhn"]
+atlas = ExtResource("1_sovd5")
+region = Rect2(65, 144, 65, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cvc73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2wxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_551xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doywe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnloq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om0ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs3lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgle7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aquhn")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}]
+
+[node name="Wand" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_xikxt")
+startup_time = 0.67
+activation_time = 0.25
+recovery_time = 0.25
+
+[node name="Detector" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7y5j8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_repeat = 1
+sprite_frames = SubResource("SpriteFrames_cvc73")
+animation = &"attack"
+frame = 6
+frame_progress = 0.750295
+offset = Vector2(0, -10)

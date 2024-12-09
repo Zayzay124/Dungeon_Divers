@@ -15,15 +15,18 @@ var respawn_point:Vector2 = Vector2.ZERO
 var fallen:bool = false
 
 ##Preload Weapon Scenes
-@export var range_attack_scene:PackedScene = preload("res://Scenes/arrow.tscn")
 @export var sword_scene:PackedScene = preload("res://Scenes/sword.tscn")
 @export var spear_scene:PackedScene = preload("res://Scenes/spear.tscn")
 @export var axe_scene:PackedScene = preload("res://Scenes/axe.tscn")
+@export var wand_scene:PackedScene = preload("res://Scenes/wand.tscn")
+@export var wand_attack_scene:PackedScene = preload("res://Scenes/wand_attack.tscn")
+
 
 ##Nodes vars to instantiate attack scenes in
 var sword:Node
 var spear:Node
 var axe:Node
+var wand:Node
 
 func _ready():
 	sword = sword_scene.instantiate()
@@ -32,6 +35,8 @@ func _ready():
 	add_child(spear)
 	axe = axe_scene.instantiate()
 	add_child(axe)
+	wand = wand_scene.instantiate()
+	add_child(wand)
 
 func _process(_delta):
 	orient()
@@ -60,9 +65,12 @@ func _input(event):
 		pitfall()
 
 func hit(amount):
-	print(health)
 	health -= amount
+	print(health)
 	taken_damage.emit()
+	$AnimationPlayer.play("hurt")
+	await get_tree().create_timer(.5).timeout
+	$AnimationPlayer.play("idle")
 	if health <= 0:
 		die()
 

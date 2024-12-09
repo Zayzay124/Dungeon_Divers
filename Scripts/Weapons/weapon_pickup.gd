@@ -1,7 +1,7 @@
 class_name Weapon_Pickup
 extends Node
 
-enum WEAPON {NONE,SWORD,SPEAR,AXE,BOW}
+enum WEAPON {NONE,SWORD,SPEAR,AXE,WAND}
 
 @export var weapon_type:WEAPON
 
@@ -35,3 +35,5 @@ func init_anim():
 			$AnimatedSprite2D.play("spear_idle")
 		Weapon_Pickup.WEAPON.AXE:
 			$AnimatedSprite2D.play("axe_idle")
+		Weapon_Pickup.WEAPON.WAND:
+			$AnimatedSprite2D.play("wand_idle")

@@ -8,7 +8,6 @@ extends EnemyState
 var attack_dir:float
 
 func enter():
-	print("sq_attack")
 	anim_player.play("idle")
 	Attack_Timer.start()
 

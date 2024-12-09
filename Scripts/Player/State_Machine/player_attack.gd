@@ -23,11 +23,13 @@ func weapon_attack():
 			player.axe.activate(attack_origin)
 		Weapon_Pickup.WEAPON.SPEAR:
 			player.spear.activate(attack_origin)
-		Weapon_Pickup.WEAPON.BOW:
-			ranged_attack()
+		Weapon_Pickup.WEAPON.WAND:
+			player.wand.activate(attack_origin)
+			await get_tree().create_timer(player.wand.startup_time).timeout
+			wand_attack()
 
-func ranged_attack():
-	var projectile = player.range_attack_scene.instantiate()
+func wand_attack():
+	var projectile = player.wand_attack_scene.instantiate()
 	projectile.initialize(attack_origin.global_position, player.last_dir.angle())
 	get_parent().add_child(projectile)
 	projectile.activate(attack_origin)

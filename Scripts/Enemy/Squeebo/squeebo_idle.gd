@@ -4,7 +4,6 @@ extends EnemyState
 @export var LOS:RayCast2D
 
 func enter():
-	print("sq idle")
 	anim_player.play("idle")
 
 func physics_update(_delta):

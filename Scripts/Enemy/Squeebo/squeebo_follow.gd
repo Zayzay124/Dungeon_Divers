@@ -2,7 +2,6 @@ class_name SqueeboFollow
 extends EnemyState
 
 func enter():
-	print("sq_follow")
 	anim_player.play("walk")
 
 func physics_update(_delta):

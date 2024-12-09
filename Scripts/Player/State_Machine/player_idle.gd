@@ -7,7 +7,6 @@ func enter():
 
 func update(_delta):
 	if fall_check():
-		print("fallen from idle")
 		transitioned.emit(self,"fall")
 
 func physics_update(_delta):
