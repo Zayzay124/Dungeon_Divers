@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv5oh2x6yok04"]
+[gd_scene load_steps=9 format=3 uid="uid://dv5oh2x6yok04"]
 
 [ext_resource type="Texture2D" uid="uid://16v0kf8bshk" path="res://Art/Tilemap/Top Down Garden Castle/Top down Garden Castle.png" id="1_kw8wc"]
 [ext_resource type="PackedScene" uid="uid://cjn35ya6houic" path="res://Scenes/player.tscn" id="2_0bcfx"]
 [ext_resource type="PackedScene" uid="uid://m7817l7u3n0p" path="res://Scenes/Enemy/blob.tscn" id="3_2p8cg"]
 [ext_resource type="PackedScene" uid="uid://btdbdtx3yqq0p" path="res://Scenes/weapon_pickup.tscn" id="4_o3xq1"]
 [ext_resource type="PackedScene" uid="uid://c7tx570km2cp0" path="res://Scenes/Enemy/squeebo.tscn" id="5_u25rh"]
+[ext_resource type="PackedScene" uid="uid://bcfvspdjycrvq" path="res://Scenes/goal.tscn" id="6_kh65l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ijfdx"]
 texture = ExtResource("1_kw8wc")
@@ -534,3 +535,6 @@ weapon_type = 4
 
 [node name="Squeebo" parent="." instance=ExtResource("5_u25rh")]
 position = Vector2(88, 72)
+
+[node name="Goal" parent="." instance=ExtResource("6_kh65l")]
+position = Vector2(-56, -40)
