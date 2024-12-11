@@ -33,3 +33,11 @@ func hit(amount):
 
 func die():
 	queue_free()
+
+func knockback(knockback_force, direction, damage):
+	velocity += (knockback_force * get_vector_from_angle(direction))
+
+func get_vector_from_angle(angle):
+	var x = cos(angle)
+	var y = sin(angle)
+	return Vector2(x, y) 

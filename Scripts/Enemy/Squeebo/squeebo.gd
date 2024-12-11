@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed:int = 50
+#add max health for knockback consistensy
 @export var health:int = 0
 
 @export var sword_scene:PackedScene = preload("res://Scenes/Enemy/squeebo_sword.tscn")
@@ -35,8 +36,17 @@ func _physics_process(_delta):
 
 func hit(amount):
 	health -= amount
+
 	if health <= 0:
 		die()
 
 func die():
 	queue_free()
+
+func knockback(knockback_force, direction, damage):
+	velocity += (knockback_force * get_vector_from_angle(direction))
+
+func get_vector_from_angle(angle):
+	var x = cos(angle)
+	var y = sin(angle)
+	return Vector2(x, y) 

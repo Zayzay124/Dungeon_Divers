@@ -53,6 +53,7 @@ texture = ExtResource("2_a7ao6")
 stretch_mode = 4
 
 [node name="WeaponPickup" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

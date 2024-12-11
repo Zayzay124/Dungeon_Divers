@@ -2,6 +2,7 @@ class_name Attack
 extends Area2D
 
 @export var damage:int = 1
+@export var knockback_force:int = 1
 
 @export var startup_time:float = 0
 @export var activation_time:float = 0
@@ -40,4 +41,5 @@ func stop():
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
+		body.knockback(knockback_force,rotation,damage)
 		body.hit(damage)

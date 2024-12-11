@@ -100,7 +100,7 @@ radius = 192.0
 collision_layer = 2
 collision_mask = 33
 script = ExtResource("1_qha58")
-health = 2
+health = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mh6uw")
