@@ -2,7 +2,7 @@ class_name Attack
 extends Area2D
 
 @export var damage:int = 1
-@export var knockback_force:int = 1
+@export var knockback_force:int = 1200
 
 @export var startup_time:float = 0
 @export var activation_time:float = 0

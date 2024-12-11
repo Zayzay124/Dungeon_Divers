@@ -21,7 +21,6 @@ var fallen:bool = false
 @export var wand_scene:PackedScene = preload("res://Scenes/wand.tscn")
 @export var wand_attack_scene:PackedScene = preload("res://Scenes/wand_attack.tscn")
 
-
 ##Nodes vars to instantiate attack scenes in
 var sword:Node
 var spear:Node
@@ -37,6 +36,10 @@ func _ready():
 	add_child(axe)
 	wand = wand_scene.instantiate()
 	add_child(wand)
+	
+#	var hud = get_node("/root/Level/CanvasLayer/HUD")
+#	print(hud.name)
+#	connect("taken_damage", hud._on_player_damaged)
 
 func _process(_delta):
 	orient()
@@ -67,7 +70,7 @@ func _input(event):
 func hit(amount):
 	health -= amount
 	print(health)
-	taken_damage.emit()
+	taken_damage.emit(amount)
 	$AnimationPlayer.play("hurt")
 	await get_tree().create_timer(.5).timeout
 	$AnimationPlayer.play("idle")

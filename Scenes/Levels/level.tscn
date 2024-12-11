@@ -518,6 +518,11 @@ layer_0/tile_data = PackedInt32Array(-65534, 65536, 1, -131070, 65536, 1, -13107
 [node name="Player" parent="." instance=ExtResource("1_rj1uv")]
 texture_filter = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_8vrro")]
+script = null
+
 [node name="Blob" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(1170, -1065)
@@ -570,7 +575,7 @@ collision_layer = 3
 
 [node name="Blob11" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
-position = Vector2(1586, -1532)
+position = Vector2(1428, -1504)
 collision_layer = 3
 
 [node name="Weapon_Pickup" parent="." instance=ExtResource("4_ynhvr")]
@@ -586,11 +591,6 @@ weapon_type = 3
 position = Vector2(32, -152)
 weapon_type = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_8vrro")]
-script = null
-
 [node name="Squeebo5" parent="." instance=ExtResource("6_hkh0m")]
 position = Vector2(1436.77, -2044.82)
 
@@ -605,3 +605,7 @@ position = Vector2(1861.54, -1945.93)
 
 [node name="Squeebo" parent="." instance=ExtResource("6_hkh0m")]
 position = Vector2(1567.87, -1889.74)
+
+[node name="Weapon_Pickup4" parent="." instance=ExtResource("4_ynhvr")]
+position = Vector2(-10, -232)
+weapon_type = 4

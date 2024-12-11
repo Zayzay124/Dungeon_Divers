@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_53fut"]
 [ext_resource type="Texture2D" uid="uid://b0i5hpjwh5f0c" path="res://Art/HUD/Heart_Full.webp" id="2_a7ao6"]
 
-[node name="HUD" type="Control"]
+[node name="HUD" type="Control" groups=["HUD"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,3 +83,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Sample text"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 324.0
+offset_bottom = 89.0
+max_value = 16.0
+fill_mode = 1
+show_percentage = false

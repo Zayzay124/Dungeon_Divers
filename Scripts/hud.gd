@@ -1,4 +1,9 @@
 extends Control
 
-var healthAmount:int = 0
-var magcCount:int = 0
+func _ready():
+	$ProgressBar.value = 16
+
+func _on_player_damaged(damage):
+	print("idk")
+	$ProgressBar.value -= damage
+	
