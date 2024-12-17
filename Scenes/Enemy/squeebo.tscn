@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7tx570km2cp0"]
+[gd_scene load_steps=16 format=3 uid="uid://c7tx570km2cp0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo.gd" id="1_lq0m3"]
 [ext_resource type="Texture2D" uid="uid://cl5078e2blh80" path="res://Art/Enemy/barbarian_enemy/barbarianAnim-spriteSheet.png" id="2_825d5"]
+[ext_resource type="PackedScene" uid="uid://c0kd6vny4fi31" path="res://Scenes/Enemy/squeebo_sword.tscn" id="2_krr43"]
 [ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="3_rl53b"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_idle.gd" id="4_uqodn"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Squeebo/squeebo_follow.gd" id="5_a8tib"]
@@ -81,6 +82,7 @@ collision_layer = 2
 collision_mask = 32
 script = ExtResource("1_lq0m3")
 health = 8
+attack_scene = ExtResource("2_krr43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ykvx5")

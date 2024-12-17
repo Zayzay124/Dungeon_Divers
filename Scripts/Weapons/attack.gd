@@ -41,5 +41,4 @@ func stop():
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
-		body.knockback(knockback_force,rotation,damage)
-		body.hit(damage)
+		body.hit(knockback_force,rotation,damage)

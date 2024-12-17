@@ -527,56 +527,67 @@ script = null
 texture_filter = 1
 position = Vector2(1170, -1065)
 collision_layer = 3
+health = 0
 
 [node name="Blob2" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(1096, -956)
 collision_layer = 3
+health = 0
 
 [node name="Blob3" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(495, -900)
 collision_layer = 3
+health = 0
 
 [node name="Blob4" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(790, -1319)
 collision_layer = 3
+health = 0
 
 [node name="Blob5" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(848, -1226)
 collision_layer = 3
+health = 0
 
 [node name="Blob6" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(958, -1287)
 collision_layer = 3
+health = 0
 
 [node name="Blob7" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(1320, -1103)
 collision_layer = 3
+health = 0
 
 [node name="Blob8" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(1535, -1221)
 collision_layer = 3
+health = 0
 
 [node name="Blob9" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(1728, -1347)
 collision_layer = 3
+health = 0
 
 [node name="Blob10" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(1635, -1350)
 collision_layer = 3
+health = 0
 
 [node name="Blob11" parent="." instance=ExtResource("4_ab2fn")]
 texture_filter = 1
 position = Vector2(1428, -1504)
 collision_layer = 3
+health = 0
 
 [node name="Weapon_Pickup" parent="." instance=ExtResource("4_ynhvr")]
 texture_filter = 1

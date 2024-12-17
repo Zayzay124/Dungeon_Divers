@@ -228,6 +228,7 @@ follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
 dead_zone_width = 0.118
 dead_zone_height = 0.151
+draw_limits = true
 
 [node name="ResPointTimer" type="Timer" parent="."]
 autostart = true

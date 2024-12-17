@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://m7817l7u3n0p"]
+[gd_scene load_steps=17 format=3 uid="uid://m7817l7u3n0p"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/state_machine.gd" id="1_l6b6x"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob.gd" id="1_qha58"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_idle.gd" id="2_6ev02"]
+[ext_resource type="PackedScene" uid="uid://coc501312bxtg" path="res://Scenes/Enemy/blob_attack.tscn" id="2_hpwhu"]
 [ext_resource type="Texture2D" uid="uid://7nig74ee4pej" path="res://Art/Enemy/slime_enemy/slimeAnim-spriteSheet.png" id="2_y7ppj"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_follow.gd" id="5_m7314"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Blob/blob_shoot.gd" id="6_g5dev"]
@@ -101,6 +102,7 @@ collision_layer = 2
 collision_mask = 33
 script = ExtResource("1_qha58")
 health = 4
+attack_scene = ExtResource("2_hpwhu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mh6uw")

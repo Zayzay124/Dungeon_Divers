@@ -21,4 +21,4 @@ weapon_type = 2
 position = Vector2(336, 264)
 
 [node name="Blob" parent="." instance=ExtResource("5_h2n3n")]
-position = Vector2(72, 360)
+position = Vector2(256, 48)

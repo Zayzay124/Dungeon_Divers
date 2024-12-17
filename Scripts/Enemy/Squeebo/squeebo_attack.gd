@@ -3,7 +3,6 @@ extends EnemyState
 
 @export var Attack_Timer:Timer
 @export var attack_origin:Node2D
-@export var blob_attack_scene:PackedScene = preload("res://Scenes/Enemy/blob_attack.tscn")
 
 var attack_dir:float
 

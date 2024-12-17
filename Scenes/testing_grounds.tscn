@@ -520,6 +520,7 @@ position = Vector2(-80, 0)
 
 [node name="Blob" parent="." instance=ExtResource("3_2p8cg")]
 position = Vector2(232, -296)
+health = 0
 
 [node name="Weapon_Pickup" parent="." instance=ExtResource("4_o3xq1")]
 position = Vector2(0, -176)

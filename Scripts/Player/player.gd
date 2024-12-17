@@ -82,6 +82,7 @@ func die():
 
 func pitfall():
 	position = respawn_point
+	health -= 4
 
 func orient():
 	$AttackOrigin.position = 16 * last_dir
