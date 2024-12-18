@@ -3,8 +3,8 @@ extends CharacterBody2D
 ##Signals
 signal taken_damage # talks to HUD
 
-@export var speed:int = 300
-@export var health:int = 0
+@export var speed:int
+@export var health:int
 
 var current_weapon:Weapon_Pickup.WEAPON
 
@@ -15,10 +15,10 @@ var respawn_point:Vector2 = Vector2.ZERO
 var fallen:bool = false
 
 ##Preload Weapon Scenes
-@export var sword_scene:PackedScene = preload("res://Scenes/sword.tscn")
-@export var spear_scene:PackedScene = preload("res://Scenes/spear.tscn")
-@export var axe_scene:PackedScene = preload("res://Scenes/axe.tscn")
-@export var wand_scene:PackedScene = preload("res://Scenes/wand.tscn")
+@export var sword_scene:PackedScene = preload("res://Scenes/Weapons/sword.tscn")
+@export var spear_scene:PackedScene = preload("res://Scenes/Weapons/spear.tscn")
+@export var axe_scene:PackedScene = preload("res://Scenes/Weapons/axe.tscn")
+@export var wand_scene:PackedScene = preload("res://Scenes/Weapons/wand.tscn")
 @export var wand_attack_scene:PackedScene = preload("res://Scenes/wand_attack.tscn")
 
 ##Nodes vars to instantiate attack scenes in
@@ -36,10 +36,7 @@ func _ready():
 	add_child(axe)
 	wand = wand_scene.instantiate()
 	add_child(wand)
-	
-#	var hud = get_node("/root/Level/CanvasLayer/HUD")
-#	print(hud.name)
-#	connect("taken_damage", hud._on_player_damaged)
+
 
 func _process(_delta):
 	orient()

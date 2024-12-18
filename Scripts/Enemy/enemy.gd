@@ -9,7 +9,6 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
 @onready var LOS:RayCast2D = $LOS
 
-var pushback:int = 1000
 var player_direction:Vector2
 
 var LOS_of_player:bool = false

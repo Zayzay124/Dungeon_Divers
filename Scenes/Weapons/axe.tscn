@@ -1,42 +1,42 @@
 [gd_scene load_steps=13 format=3 uid="uid://bcl6kkoht2ybt"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/attack.gd" id="1_n6hsv"]
-[ext_resource type="Texture2D" uid="uid://bs8k4ov3lmghe" path="res://Art/Weapons/Axe attack-Sheet.png" id="2_d8bc0"]
+[ext_resource type="Script" path="res://Scripts/Weapons/attack.gd" id="1_7aid0"]
+[ext_resource type="Texture2D" uid="uid://bs8k4ov3lmghe" path="res://Art/Weapons/Axe attack-Sheet.png" id="2_5yqip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klhkm"]
 radius = 16.0
 height = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d646o"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(0, 0, 85, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnkpc"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(85, 0, 85, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70d5y"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(170, 0, 85, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcak0"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(0, 72, 85, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ew2ca"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(85, 72, 85, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hub3h"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(170, 72, 85, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eapnr"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(0, 144, 85, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcnq5"]
-atlas = ExtResource("2_d8bc0")
+atlas = ExtResource("2_5yqip")
 region = Rect2(85, 144, 85, 72)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldpf7"]
@@ -76,7 +76,7 @@ texture_filter = 1
 position = Vector2(16, 0)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_n6hsv")
+script = ExtResource("1_7aid0")
 damage = 3
 startup_time = 0.33
 activation_time = 0.25

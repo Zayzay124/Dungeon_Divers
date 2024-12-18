@@ -1,20 +1,20 @@
 class_name Attack
 extends Area2D
 
-@export var damage:int = 1
-@export var knockback_force:int = 1200
+@export var damage:int
 
 @export var startup_time:float = 0
 @export var activation_time:float = 0
 @export var recovery_time:float = 0
 
+var knockback_force:int
+var knockback_multiplier:int = 500
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	knockback_force = damage * knockback_multiplier
 	stop()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 

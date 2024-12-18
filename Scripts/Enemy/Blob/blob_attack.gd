@@ -1,7 +1,7 @@
 class_name Blob_Attack
 extends Enemy_Attack
 
-@export var speed:int = 500
+@export var speed:int
 
 var velocity:Vector2 = Vector2.ZERO
 
